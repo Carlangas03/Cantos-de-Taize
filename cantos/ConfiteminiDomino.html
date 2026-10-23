@@ -102,10 +102,10 @@ V:B name ="Bajo" clef=bass
                         // Si la línea tiene la etiqueta [V:X], la conservamos y muteamos el resto
                         if (lineaLimpia.startsWith("[V:")) {
                             let etiquetaVoz = linea.substring(0, linea.indexOf("]") + 1);
-                            linea = etiquetaVoz + " z || z4 | z4 |z4 | z4 |"; 
+                            linea = etiquetaVoz + " z4 |"; 
                         } else {
                             // Es una línea de continuación (sin [V:X] pero de la misma voz), la convertimos entera en silencios
-                            linea = " z4 | z4 | z4 |z4 |]";
+                            linea = " z4 |]";
                         }
                     }
                 }
