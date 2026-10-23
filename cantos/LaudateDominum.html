@@ -2,37 +2,45 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laudate Dominum</title>
-    <!-- Importar abcjs desde CDN -->
+    <!-- Librerías de ABCJS -->
     <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body style="font-family: Arial, sans-serif; padding: 20px; background: #b3daff;">
+<body>
 
-    
-    <div style="background: #f0faff; padding: 15px; border-radius: 8px; margin-bottom: 20px;"><a href="../index.html"  style="color: #ff5e00"><b>Click para volver al Índice</b></a></div>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html">← Volver al Índice</a>
+        </div>
 
-    <!-- BOTONES DE SELECCIÓN MÚLTIPLE (Checkboxes) -->
-    <div style="background: #f0faff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-        <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
-        
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
-        </label>
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
-        </label>
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
-        </label>
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
-        </label>
+        <h1>Laudate Dominum</h1>
+
+        <!-- Checkboxes de voces -->
+        <div style="margin-bottom: 20px;">
+            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
     </div>
-
-    <!-- Contenedores visuales -->
-    <div id="paper" style="background: #f0faff; padding: 15px; border-radius: 8px; box-sizing: border-box"></div>
-    <div id="audio" style="margin-top: 15px;"></div>
 
     <script>
         // =====================================================================
@@ -141,5 +149,7 @@ V:B name ="Bajo" clef=bass
         window.onload = actualizarMotor;
         
     </script>
+
+    <script src="../motor.js"></script>
 </body>
 </html>

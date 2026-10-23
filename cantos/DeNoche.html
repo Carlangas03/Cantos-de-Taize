@@ -2,37 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>De noche</title>
-    <!-- Importar abcjs desde CDN -->
+    <!-- Librerías de ABCJS -->
     <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body style="font-family: Arial, sans-serif; padding: 20px; background: #b3daff;">
 
-    
-    <div style="background: #f0faff; padding: 15px; border-radius: 8px; margin-bottom: 20px;"><a href="../index.html"  style="color: #ff5e00"><b>Click para volver al Índice</b></a></div>
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html">← Volver al Índice</a>
+        </div>
 
-    <!-- BOTONES DE SELECCIÓN MÚLTIPLE (Checkboxes) -->
-    <div style="background: #f0faff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-        <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
-        
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
-        </label>
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
-        </label>
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
-        </label>
-        <label style="margin-right: 15px; cursor: pointer;">
-            <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
-        </label>
+        <h1>De noche</h1>
+
+        <!-- Checkboxes de voces -->
+         <div style="margin-bottom: 20px;">
+            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
     </div>
 
-    <!-- Contenedores visuales -->
-    <div id="paper" style="background: #f0faff; padding: 15px; border-radius: 8px; box-sizing: border-box"></div>
-    <div id="audio" style="margin-top: 15px;"></div>
 
     <script>
         // =====================================================================
@@ -51,106 +60,34 @@ Q: 1/4=75
 V:S name="Soprano" clef=treble
 %%midi program 52
 [V:S] A || A3/2 A/  A/ A A/ | B B2 B | A A/ A/ A3/2 G/ | E2 E2 |
+w: De no-che~i-re-mos de no-che que pa-ra~en-con-trar la fuen-te
 % 
 F/ F F/ G F/G/ | (A/ c B/) A2 | ^C/ C C/ D E/D/ | ^C C2 A |]
+w:so-lo la sed nos a lum _ _ bra so-lo la sed nos a-lum-bra. De
 V:A name="Contralto" clef=treble
 %%midi program 52
 [V:A] A, || F3/2 F/  F/ F F/ | F F2 F | E E/ E/ D3/2 D/ | (D ^C/=B,/) C2 |
+w: De no-che~i-re-mos de no-che que pa-ra~en-con-trar la fuen _ -te
 % 
 D/ D D/ E D/E/ | A2 E2 | A,/ A, A,/ B, B,/B,/ | A, A,2 A, |]
+w:so-lo la sed nos a lum bra so-lo la sed nos a-lum-bra. De
 V:T name="Tenor" clef=bass
 %%midi program 52
 [V:T] A, || A,3/2 A,/  D/ D C/ | B, B,2 F,/G,/ | A, A,/ A,/ D,3/2 G,/ | A,2 A,2 |
+w: De no-che~i-re-mos de no-che que _ pa-ra~en-con-trar la fuen-te
 % 
 A,/ A, A,/ C C/C/ | C2 ^C2 | A,/ A, E,/ F, G,/F,/ | E, E,2 A, |]
+w:so-lo la sed nos a lum bra so-lo la sed nos a-lum-bra. De
 V:B name ="Bajo" clef=bass
 %%midi program 52
 [V:B] A,, || D,3/2 D,/  D,/ D, D,/ | D, D,2 D, | C, C,/ C,/ B,,3/2 B,,/ | A,,2 A,,2 |
+w: De no-che~i-re-mos de no-che que pa-ra~en-con-trar la fuen-te
 % 
 D,/ D, D,/ C, C,/C,/ | (F, G,) A,2 | A,,/ A,, A,,/ A,, A,,/A,,/ | A,, A,,2 A,, |]
-`;
+w:so-lo la sed nos a lum _ bra so-lo la sed nos a-lum-bra. De
+`;    
+</script>
 
-        // =====================================================================
-        // ZONA DE LÓGICA (EL MOTOR)
-        // -> No hace falta que toques esto nunca más.
-        // =====================================================================
-
-        function actualizarMotor() {
-            // 1. Ver qué voces están activas
-            const activas = {
-                S: document.getElementById('chk-S').checked,
-                A: document.getElementById('chk-A').checked,
-                T: document.getElementById('chk-T').checked,
-                B: document.getElementById('chk-B').checked
-            };
-
-            let lineas = MI_PARTITURA.trim().split('\n');
-            let partituraProcesada = [];
-            let vozActual = ""; // Memoria de la última voz detectada
-
-            // 2. Procesar línea a línea rastreando el contexto
-            for (let linea of lineas) {
-                let lineaLimpia = linea.trim();
-
-                // Si la línea define cabecera de voz (ej: V:S name=...)
-                if (lineaLimpia.startsWith("V:")) {
-                    vozActual = lineaLimpia.charAt(2); // Extrae S, A, T o B
-                }
-
-                // Si la línea comienza explícitamente con [V:X], actualizamos la voz actual
-                if (lineaLimpia.startsWith("[V:")) {
-                    vozActual = lineaLimpia.charAt(3);
-                }
-
-                // Si estamos dentro de una voz y esa voz está desactivada por el usuario
-                if (vozActual && activas[vozActual] === false) {
-                    // Si la línea contiene notas (es decir, no es una cabecera de sistema)
-                    if (lineaLimpia.includes("[V:") || (!lineaLimpia.startsWith("X:") && !lineaLimpia.startsWith("T:") && !lineaLimpia.startsWith("M:") && !lineaLimpia.startsWith("L:") && !lineaLimpia.startsWith("K:") && !lineaLimpia.startsWith("%%score") && !lineaLimpia.startsWith("V:"))) {
-                        
-                        // Si la línea tiene la etiqueta [V:X], la conservamos y muteamos el resto
-                        if (lineaLimpia.startsWith("[V:")) {
-                            let etiquetaVoz = linea.substring(0, linea.indexOf("]") + 1);
-                            linea = etiquetaVoz + " z4 |]"; 
-                        } else {
-                            // Es una línea de continuación (sin [V:X] pero de la misma voz), la convertimos entera en silencios
-                            linea = " z4 |]";
-                        }
-                    }
-                }
-
-                partituraProcesada.push(linea);
-            }
-
-            const abcFinal = partituraProcesada.join('\n');
-
-            // 3. Renderizar y cargar audio
-            document.getElementById("paper").innerHTML = "";
-            document.getElementById("audio").innerHTML = "";
-
-            const visualObj = ABCJS.renderAbc("paper", abcFinal, {
-                responsive: "resize",
-                scale: 0.8,
-                add_classes: true
-            });
-
-            if (ABCJS.synth.supportsAudio()) {
-                const synthControl = new ABCJS.synth.SynthController();
-                synthControl.load("#audio", null, {
-                    displayPlay: true, displayLoop: true, displayRestart: true, displayProgress: true
-                });
-
-                const createSynth = new ABCJS.synth.CreateSynth();
-                createSynth.init({
-                    visualObj: visualObj[0]
-                }).then(() => {
-                    synthControl.setTune(visualObj[0], false);
-                });
-            }
-        }
-
-        // Arrancar el motor al abrir la página
-        window.onload = actualizarMotor;
-        
-    </script>
+<script src="../motor.js"></script>
 </body>
 </html>
