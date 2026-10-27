@@ -40,6 +40,7 @@ function actualizarMotor() {
 
     const abcFinal = partituraProcesada.join('\n');
 
+// 3. Renderizar y cargar audio
     document.getElementById("paper").innerHTML = "";
     document.getElementById("audio").innerHTML = "";
 
@@ -57,9 +58,13 @@ function actualizarMotor() {
 
         const createSynth = new ABCJS.synth.CreateSynth();
         createSynth.init({
-            visualObj: visualObj[0]
+            visualObj: visualObj[0],
+            options: {
+                chordsOff: true // ¡El parámetro mágico que silencia el piano!
+            }
         }).then(() => {
-            synthControl.setTune(visualObj[0], false);
+            // También se lo pasamos al controlador por seguridad
+            synthControl.setTune(visualObj[0], false, { chordsOff: true });
         });
     }
 }
