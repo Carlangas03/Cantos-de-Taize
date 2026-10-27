@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Kyrie eleison 1</title>
+    <!-- Importar abcjs desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background: #b3daff;">
+
+    
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html">← Volver al Índice</a>
+        </div>
+
+        <h1>Kyrie 1</h1>
+
+        <!-- Checkboxes de voces -->
+         <div style="margin-bottom: 20px;">
+            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+    <script>
+        // =====================================================================
+        // ZONA DE DATOS (LA PLANTILLA)
+        // -> Solo necesitas modificar este bloque de texto para cada canción.
+        // =====================================================================
+        
+        const MI_PARTITURA = `
+X:1
+T:Kyrie 1
+T:"Señor, ten piedad"
+T:Esta versión alarga la sílaba "-son" para hacer la partitura completamente en 2/4.
+M:2/4
+L:1/4
+K:G
+Q: 1/4=90        
+%%score [S A T B]
+V:S name="Soprano" clef=treble
+[V:S] B/c/ d | G/A/ B | E/ G F/ |  G2 | B/c/ d | G/A/ B | E/ G F/ | G2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+V:A name="Contralto" clef=treble
+G/G/ F | E/E/ F | E/ E D/ | D2 | G/G/ F | E/E/ F | E/ E D/ | D2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+[V:A] 
+V:T name="Tenor" clef=bass
+D/E/ D | B,/C/ D | C/ B, A,/ | B,2 | D/E/ D | B,/C/ D | C/ B, A,/ | B,2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+[V:T] 
+V:B name ="Bajo" clef=bass
+[V:B] 
+G,/G,/ D, | E,/E,/ B,, | C,/ C, D,/ | G,,2 | G,/G,/ D, | E,/E,/ B,, | C,/ C, D,/ | G,,2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+`;
+
+        // =====================================================================
+        // ZONA DE LÓGICA (EL MOTOR)
+        // -> No hace falta que toques esto nunca más.
+        // =====================================================================
+
+        function actualizarMotor() {
+            // 1. Ver qué voces están activas
+            const activas = {
+                S: document.getElementById('chk-S').checked,
+                A: document.getElementById('chk-A').checked,
+                T: document.getElementById('chk-T').checked,
+                B: document.getElementById('chk-B').checked
+            };
+
+            let lineas = MI_PARTITURA.trim().split('\n');
+            let partituraProcesada = [];
+            let vozActual = ""; // Memoria de la última voz detectada
+
+            // 2. Procesar línea a línea rastreando el contexto
+            for (let linea of lineas) {
+                let lineaLimpia = linea.trim();
+
+                // Si la línea define cabecera de voz (ej: V:S name=...)
+                if (lineaLimpia.startsWith("V:")) {
+                    vozActual = lineaLimpia.charAt(2); // Extrae S, A, T o B
+                }
+
+                // Si la línea comienza explícitamente con [V:X], actualizamos la voz actual
+                if (lineaLimpia.startsWith("[V:")) {
+                    vozActual = lineaLimpia.charAt(3);
+                }
+
+                // Si estamos dentro de una voz y esa voz está desactivada por el usuario
+                if (vozActual && activas[vozActual] === false) {
+                    // Si la línea contiene notas (es decir, no es una cabecera de sistema)
+                    if (lineaLimpia.includes("[V:") || (!lineaLimpia.startsWith("X:") && !lineaLimpia.startsWith("T:") && !lineaLimpia.startsWith("M:") && !lineaLimpia.startsWith("L:") && !lineaLimpia.startsWith("K:") && !lineaLimpia.startsWith("%%score") && !lineaLimpia.startsWith("V:"))) {
+                        
+                        // Si la línea tiene la etiqueta [V:X], la conservamos y muteamos el resto
+                        if (lineaLimpia.startsWith("[V:")) {
+                            let etiquetaVoz = linea.substring(0, linea.indexOf("]") + 1);
+                            linea = etiquetaVoz + " z || z4 | z4 |z4 | z4 |"; 
+                        } else {
+                            // Es una línea de continuación (sin [V:X] pero de la misma voz), la convertimos entera en silencios
+                            linea = " z4 | z4 | z4 |z4 |]";
+                        }
+                    }
+                }
+
+                partituraProcesada.push(linea);
+            }
+
+            const abcFinal = partituraProcesada.join('\n');
+
+            // 3. Renderizar y cargar audio
+            document.getElementById("paper").innerHTML = "";
+            document.getElementById("audio").innerHTML = "";
+
+            const visualObj = ABCJS.renderAbc("paper", abcFinal, {
+                responsive: "resize",
+                scale: 0.8,
+                add_classes: true
+            });
+
+            if (ABCJS.synth.supportsAudio()) {
+                const synthControl = new ABCJS.synth.SynthController();
+                synthControl.load("#audio", null, {
+                    displayPlay: true, displayLoop: true, displayRestart: true, displayProgress: true
+                });
+
+                const createSynth = new ABCJS.synth.CreateSynth();
+                createSynth.init({
+                    visualObj: visualObj[0]
+                }).then(() => {
+                    synthControl.setTune(visualObj[0], false);
+                });
+            }
+        }
+
+        // Arrancar el motor al abrir la página
+        window.onload = actualizarMotor;
+        
+    </script>
+</body>
+</html>
