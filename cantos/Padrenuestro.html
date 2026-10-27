@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padrenuestro</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html">← Volver al Índice</a>
+        </div>
+
+        <h1>Padrenuestro</h1>
+
+        <!-- Checkboxes de voces -->
+        <div style="margin-bottom: 20px;">
+            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Padrenuestro
+L:1/4
+K:G
+Q: 1/4=60       
+%%score [S A T B]
+V:S name="Soprano" clef=treble
+[V:S] G/G/ A A/A/ (3:2:3)B/B/B/ c c !breath! (3:2:3)A/A/A/ G/G/ (3:2:3)G/G/G/ A A !breath! (3:2:3)G/G/G/ (3:2:3)G/G/G/ A A !breath!
+w: Pa-dre nues-tro que~es-tás en el Cie-lo, san-ti-fi-ca-do se-a-tu nom-bre. Ven-ga~a no-so-tros tu Rei-no.
+%
+B/B/ B/B/ B/B/ c !breath! A/A/ G/G/ (3:2:3)G/G/G/ A A !breath! G/G/ (3:2:3)G/G/G/ G/G/ G/G/ A A/ !breath!
+w: Há-ga-se tu vo-lun-tad, en la tie-rra co-mo~en el Cie-lo. Da-nos hoy nues-tro pan de ca-da dí-a.
+%
+A/2 B/B/ (3:2:3)B/B/B/ c c !breath! (3:2:3)A/A/A/ A/A/ A/A/ G G/ G/ G/G/ G/G/ A A !breath!
+w: Per-do-na nues-tras o-fen-sas, co-mo no-so-tros per-do-na-mos a los que nos o-fen-den.
+%
+(3:2:3)z/G/G/ (3:2:3)G/G/G/ (3:2:3)G/G/G/ G/G/ A3/2 !breath! B/2 B/B/ B/B/ c !breath! (A2 G2) A4 |]
+w: No nos de-jes ca-er en la ten-ta-ción, y lí-bra-nos del mal. A _ mén.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+V:A name="Contralto" clef=treble
+[V:A] E/E/ F F/F/ (3:2:3)G/G/G/ G G !breath! (3:2:3)F/F/F/ E/E/ (3:2:3)E/E/E/ E E !breath! (3:2:3)E/E/E/ (3:2:3)E/E/E/ F F !breath!
+w: Pa-dre nues-tro que~es-tás en el Cie-lo, san-ti-fi-ca-do se-a-tu nom-bre. Ven-ga~a no-so-tros tu Rei-no.
+%
+G/G/ G/G/ G/G/ G !breath! F/F/ E/E/ (3:2:3)E/E/E/ E E !breath! E/E/ (3:2:3)E/E/E/ E/E/ E/E/ F F/ !breath!
+w: Há-ga-se tu vo-lun-tad, en la tie-rra co-mo~en el Cie-lo. Da-nos hoy nues-tro pan de ca-da dí-a.
+%
+F/2 G/G/ (3:2:3)G/G/G/ G G !breath! (3:2:3)F/F/F/ F/F/ F/F/ E E/2 E/2 E/E/ E/E/ E E !breath!
+w: Per-do-na nues-tras o-fen-sas, co-mo no-so-tros per-do-na-mos a los que nos o-fen-den.
+%
+(3:2:3)z/E/E/ (3:2:3)E/E/E/ (3:2:3)E/E/E/ E/E/ F3/2 !breath! G/2 G/G/ G/G/ G !breath! (F2 E2) E4 |]
+w: No nos de-jes ca-er en la ten-ta-ción, y lí-bra-nos del mal. A _ mén.
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+V:T name="Tenor" clef=bass
+[V:T] B,/B,/ D D/D/ (3:2:3)D/D/D/ E E !breath! (3:2:3)D/D/D/ B,/B,/ (3:2:3)B,/B,/B,/ ^C C !breath! (3:2:3)B,/B,/B,/ (3:2:3)B,/B,/B,/ D D !breath!
+w: Pa-dre nues-tro que~es-tás en el Cie-lo, san-ti-fi-ca-do se-a-tu nom-bre. Ven-ga~a no-so-tros tu Rei-no.
+%
+D/D/ D/D/ D/D/ E !breath! D/D/ B,/B,/ (3:2:3)B,/B,/B, ^C C !breath! B,/B,/ (3:2:3)B,/B,/B,/ B,/B,/ B,/B,/ D D/ !breath!
+w: Há-ga-se tu vo-lun-tad, en la tie-rra co-mo~en el Cie-lo. Da-nos hoy nues-tro pan de ca-da dí-a.
+%
+D/2 D/D/ (3:2:3)D/D/D/ E E !breath! (3:2:3)D/D/D/ D/D/ D/D/ B, B,/2 B,/2 B,/B,/ B,/B,/ ^C C !breath!
+w: Per-do-na nues-tras o-fen-sas, co-mo no-so-tros per-do-na-mos a los que nos o-fen-den.
+%
+(3:2:3)z/B,/B,/ (3:2:3)B,/B,/B,/ (3:2:3)B,/B,/B,/ B,/B,/ D3/2 !breath! D/2 D/D/ D/D/ E !breath! (D2 B,2) ^C4 |]
+w: No nos de-jes ca-er en la ten-ta-ción, y lí-bra-nos del mal. A _ mén.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+V:B name="Bajo" clef=bass
+[V:B] E,/E,/ D, D,/D,/ (3:2:3)G,/G,/G,/ C, C, !breath! (3:2:3)D,/D,/D,/ E,/E,/ (3:2:3)E,/E,/E,/ A,, A,, !breath! (3:2:3)E,/E,/E,/ (3:2:3)E,/E,/E,/ D, D, !breath!
+w: Pa-dre nues-tro que~es-tás en el Cie-lo, san-ti-fi-ca-do se-a-tu nom-bre. Ven-ga~a no-so-tros tu Rei-no.
+%
+G,/G,/ G,/G,/ G,/G,/ C, !breath! D,/D,/ E,/E,/ (3:2:3)E,/E,/E,/ [A,A,,] [A,A,,] !breath! E,/E,/ (3:2:3)E,/E,/E,/ E,/E,/ E,/E,/ D, D,/
+w: Há-ga-se tu vo-lun-tad, en la tie-rra co-mo~en el Cie-lo. Da-nos hoy nues-tro pan de ca-da dí-a.
+%
+D,/2 G,/G,/ (3:2:3)G,/G,/G,/ C, C, !breath! (3:2:3)D,/D,/D,/ D,/D,/ D,/D,/ E, E,/2 E,/2 E,/E,/ E,/E,/ [A,,A,] [A,,A,] !breath!
+w: Per-do-na nues-tras o-fen-sas, co-mo no-so-tros per-do-na-mos a los que nos o-fen-den.
+%
+(3:2:3)z/E,/E,/ (3:2:3)E,/E,/E,/ (3:2:3)E,/E,/E,/ E,/E,/ D,3/2 !breath! G,/2 G,/G,/ G,/G,/ C, !breath! (D,2 E,2) [A,,A,]4 |]
+w: No nos de-jes ca-er en la ten-ta-ción, y lí-bra-nos del mal. A _ mén.
+`;
+    </script>
+
+<!-- Motor general externo -->
+<script src="../motor.js"></script>
+</body>
+</html>

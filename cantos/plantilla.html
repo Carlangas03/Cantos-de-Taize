@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magnificat (canon)</title>
+    <title>Padrenuestro</title>
     <!-- Librerías de ABCJS -->
     <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
@@ -18,18 +18,22 @@
             <a href="../index.html">← Volver al Índice</a>
         </div>
 
-        <h1>Magnificat (canon)</h1>
+        <h1>Padrenuestro</h1>
 
         <!-- Checkboxes de voces -->
         <div style="margin-bottom: 20px;">
             <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
             <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz aguda
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
             </label>
-            <label id="chk-A"></label>
-            <label id="chk-T"></label>
             <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz grave
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
             </label>
             
         </div>
