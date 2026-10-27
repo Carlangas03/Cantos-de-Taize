@@ -1,11 +1,18 @@
 // motor.js - Lógica general para renderizar partituras y reproducir audio
 
+// motor.js - Lógica general robusta (Ocultación dinámica de pentagramas y acordes mudos)
+
 function actualizarMotor() {
+    const comprobarVoz = (id) => {
+        const checkbox = document.getElementById(id);
+        return checkbox ? checkbox.checked : true;
+    };
+
     const activas = {
-        S: document.getElementById('chk-S').checked,
-        A: document.getElementById('chk-A').checked,
-        T: document.getElementById('chk-T').checked,
-        B: document.getElementById('chk-B').checked
+        S: comprobarVoz('chk-S'),
+        A: comprobarVoz('chk-A'),
+        T: comprobarVoz('chk-T'),
+        B: comprobarVoz('chk-B')
     };
 
     let lineas = MI_PARTITURA.trim().split('\n');
@@ -15,24 +22,28 @@ function actualizarMotor() {
     for (let linea of lineas) {
         let lineaLimpia = linea.trim();
 
-        if (lineaLimpia.startsWith("V:")) {
-            vozActual = lineaLimpia.charAt(2);
+        // 1. Si encontramos la configuración general (%%score), borramos las voces inactivas
+        // para que abcjs ni siquiera reserve el espacio del pentagrama.
+        if (lineaLimpia.startsWith("%%score")) {
+            if (!activas.S) linea = linea.replace(/S/g, '');
+            if (!activas.A) linea = linea.replace(/A/g, '');
+            if (!activas.T) linea = linea.replace(/T/g, '');
+            if (!activas.B) linea = linea.replace(/B/g, '');
+            // Limpieza estética de corchetes vacíos (ej: si se quedan [] o () sueltos)
+            linea = linea.replace(/\[\s*\]/g, '').replace(/\(\s*\)/g, '');
         }
 
-        if (lineaLimpia.startsWith("[V:")) {
+        // 2. Detectar qué voz estamos leyendo en este momento
+        if (lineaLimpia.startsWith("V:")) {
+            vozActual = lineaLimpia.charAt(2);
+        } else if (lineaLimpia.startsWith("[V:")) {
             vozActual = lineaLimpia.charAt(3);
         }
 
+        // 3. LA MAGIA: Si la voz actual está desactivada, directamente IGNORAMOS todas sus líneas
+        // (tanto sus notas como su letra 'w:'). La línea no se guarda y el pentagrama desaparece.
         if (vozActual && activas[vozActual] === false) {
-            if (lineaLimpia.includes("[V:") || (!lineaLimpia.startsWith("X:") && !lineaLimpia.startsWith("T:") && !lineaLimpia.startsWith("M:") && !lineaLimpia.startsWith("L:") && !lineaLimpia.startsWith("K:") && !lineaLimpia.startsWith("%%score") && !lineaLimpia.startsWith("V:"))) {
-                
-                if (lineaLimpia.startsWith("[V:")) {
-                    let etiquetaVoz = linea.substring(0, linea.indexOf("]") + 1);
-                    linea = etiquetaVoz + " z4 |]"; 
-                } else {
-                    linea = " z4 |]";
-                }
-            }
+            continue; 
         }
 
         partituraProcesada.push(linea);
@@ -40,7 +51,7 @@ function actualizarMotor() {
 
     const abcFinal = partituraProcesada.join('\n');
 
-// 3. Renderizar y cargar audio
+    // 4. Renderizar la partitura visual (compactada y limpia)
     document.getElementById("paper").innerHTML = "";
     document.getElementById("audio").innerHTML = "";
 
@@ -50,6 +61,7 @@ function actualizarMotor() {
         add_classes: true
     });
 
+    // 5. Preparar el audio (con chordsOff para silenciar los acordes del piano)
     if (ABCJS.synth.supportsAudio()) {
         const synthControl = new ABCJS.synth.SynthController();
         synthControl.load("#audio", null, {
@@ -60,10 +72,9 @@ function actualizarMotor() {
         createSynth.init({
             visualObj: visualObj[0],
             options: {
-                chordsOff: true // ¡El parámetro mágico que silencia el piano!
+                chordsOff: true
             }
         }).then(() => {
-            // También se lo pasamos al controlador por seguridad
             synthControl.setTune(visualObj[0], false, { chordsOff: true });
         });
     }
