@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misericordias Domini</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html">← Volver al Índice</a>
+        </div>
+
+        <h1>Misericordias Domini</h1>
+
+        <!-- Checkboxes de voces -->
+        <div style="margin-bottom: 20px;">
+            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Misericordias Domini
+T:"Cantaré eternamente las misericordias del Señor"
+C: Salmo 89
+M:C
+L:1/4
+K:F
+Q: 1/4=60        
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] "Dm" z/2 F/2 F/F/ "A" E/E/ E | "Dm" F F "C" G2 | "F" A3/2 A/2 "C" c G | "Dm" F "A" E "Dm" D2 :|]
+w: Mi-se-ri-cor-di-as Do-mi-ni in ae-ter-num can-ta-bo
+V:A name="C" clef=treble
+[V:A] z/2 D/2 D/D/ ^C/C/ C | D D E2 | F3/2 F/2 E E | D ^C D2 :|]
+w: Mi-se-ri-cor-di-as Do-mi-ni in ae-ter-num can-ta-bo
+V:T name="T" clef=bass
+[V:T] z/2 A,/2 A,/A,/ A,/A,/ A, | A, A, C2 | C3/2 C/2 C C | A, A, F,2 :|]
+w: Mi-se-ri-cor-di-as Do-mi-ni in ae-ter-num can-ta-bo
+V:B name="B" clef=bass
+[V:B] z/2 D,/2 D,/D,/ A,,/A,,/ A,, | D, D, C,2 | F,3/2 F,/2 C, C, | D, A,, D,2 :|]
+w: Mi-se-ri-cor-di-as Do-mi-ni in ae-ter-num can-ta-bo
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>
