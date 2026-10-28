@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laudate omnes gentes</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html">← Volver al Índice</a>
+        </div>
+
+        <h1>Laudate omnes gentes</h1>
+
+        <!-- Checkboxes de voces -->
+        <div style="margin-bottom: 20px;">
+            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Laudate omnes gentes
+T:"Alabad al Señor todas las naciones"
+C:Salmo 116
+M:3/4
+L:1/4
+K:Eb
+Q: 1/4=75        
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S]  "Eb" z/2 G/2 [|: G3/2 G/2 "Ab" A/ "Eb" G/ | "Bb" F "Cm" E z/2 "G7" D/2 | "Cm" E3/2 "Bb" F/2 "Eb" G/ "Ab" A/ | "Bb" F2 z/2 "Eb" G/2 |  G3/2 G/2 "Ab" A/ "Eb" G/ | "Bb" F "Cm" E z/2 G/2 | "Fm" F3/2 "Eb" E/2 "Ab" E/ "Bb" D/  | "Eb" E2 z/2 G/2 :|]
+w: Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau
+V:A name="C" clef=treble
+[V:A] z/2 E/2 [|: E3/2 E/2 E/E/ | D C z/2 =B,/2 | C3/2 D/2 E/F/ | D2 z/2 E/2 |  E3/2 E/2 E/E/ | D C z/2 E/2 | C3/2 C/2 B,/B,/ | B,2 z/2 E/2 :|]
+w: Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau
+V:T name="T" clef=bass
+[V:T] z/2 B,/2 [|: B,3/2 B,/2 C/B,/ | B, G, z/2 G,/2 | G,3/2 B,/2 B,/C/ | B,2 z/2 B,/2 |  B,3/2 B,/2 C/B,/ | B, G, z/2 G,/2 | A,3/2 G,/2 F,/F,/ | G,2 z/2 B,/2 :|]
+w: Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau
+V:B name="B" clef=bass
+[V:B] z/2 E,/2 [|: E,3/2 E,/2 [A,,A,]/E,/ | B,, C, z/2 G,,/2 | C,3/2 B,,/2 E,/[A,,A,]/ | [B,,B,]2 z/2 E,/2 |  E,3/2 E,/2 [A,,A,]/E,/ | B,, C, z/2 C,/2 | A,,3/2 A,,/2 B,,/B,,/ | E,2 z/2 E,/2 :|]
+w: Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau-da-te om-nes gen-tes, lau-da-te Do-mi-num. Lau
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>
