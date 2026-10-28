@@ -6,7 +6,7 @@ body {
     background: #b3daff; /* Color de fondo base */
     padding: 40px; 
     color: #1e293b; 
-    margin: 15px auto;
+    margin: 0;
     min-height: 100vh;
     box-sizing: border-box;
 }
@@ -28,7 +28,8 @@ body::before {
 
 .container { 
     max-width: 600px; 
-    margin: 15px auto; 
+    margin: 0 auto;
+    margin-bottom: 30px; 
     background: #f0faff; 
     padding: 25px; 
     border-radius: 12px; 
@@ -40,4 +41,4 @@ ul { list-style: none; padding: 0; }
 li { margin: 15px 0; }
 a { text-decoration: none; color: #ff5e00; font-weight: bold; font-size: 18px; }
 a:hover { text-decoration: underline; color: #ff5e00; }
-p { text-align: justify;}
+p { text-align: justify; }
