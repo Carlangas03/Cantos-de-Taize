@@ -42,6 +42,11 @@ li { margin: 15px 0; }
 a { text-decoration: none; color: #ff5e00; font-weight: bold; font-size: 18px; }
 a:hover { text-decoration: underline; color: #ff5e00; }
 p { text-align: justify; }
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Opcional: redondea un poco los bordes para que encaje con el estilo de la web */
+}
 
 /* Adaptación automática para pantallas de móviles */
 @media (max-width: 600px) {
