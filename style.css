@@ -54,7 +54,16 @@ img {
     border-radius: 8px; /* Opcional: redondea un poco los bordes para que encaje con el estilo de la web */
 }
 
-
+/* Adaptación automática para pantallas de móviles */
+@media (max-width: 600px) {
+    body {
+        padding: 15px; /* Reduce el marco exterior azul en móviles */
+    }
+    .container {
+        padding: 15px; /* Reduce el espacio interior blanco para ganar anchura */
+        margin-bottom: 20px; 
+    }
+}
 
 /* Estilos para el PANEL DE TRANSPORTE: botones, texto */
 .transporte-container {
@@ -148,14 +157,18 @@ html {
     scroll-behavior: smooth;
 }
 
-
-/* Adaptación automática para pantallas de móviles */
+/* Adaptación automática del menú para móviles */
 @media (max-width: 600px) {
-    body {
-        padding: 15px; /* Reduce el marco exterior azul en móviles */
+    .site-nav {
+        flex-wrap: wrap;         /* Permite que los elementos bajen a la siguiente línea si no caben */
+        justify-content: center; /* Centra los botones para que quede simétrico y ordenado */
+        gap: 10px;               /* Reduce un poco la separación entre ellos */
+        padding: 8px 10px;       /* Reduce el espacio interior de la barra */
     }
-    .container {
-        padding: 15px; /* Reduce el espacio interior blanco para ganar anchura */
-        margin-bottom: 20px; 
+
+    .nav-link {
+        font-size: 14px;         /* Reduce ligeramente el tamaño de la letra en móviles */
+        padding: 4px 8px;        /* Hace los botones más compactos */
     }
+
 }
