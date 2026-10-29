@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alleluia 11</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html">← Volver al Índice</a>
+        </div>
+
+        <h1>Alleluia 11</h1>
+
+        <!-- Checkboxes de voces -->
+        <div style="margin-bottom: 20px;">
+            <span class="letrero-voces-transporte">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Alleluia 11
+M:3/4
+L:1/4
+K:Ab
+Q: 1/4=100        
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] F/A/ (A/G/) | A2  [|: c/c/ | B A d/c/ | B A F/A/ | (A/G/) A2 || A4 c/c/ (B/A/) | [BG]3 :|]
+w: (Al-le-lu _ ia) Al-le-lu-ia, al-le-lu-ia, al-le-lu- _ ia
+V:A name="C" clef=treble
+[V:A] z2 | z2 [|: A/A/ | G F A/A/ | G F F/F/ | E E2 || E4 z2 E3 :|]
+w: _ _ Al-le-lu-ia, al-le-lu-ia, al-le-lu-ia
+V:T name="T" clef=bass
+[V:T] z2 | z2 [|: E/E/ | E C | F/E/ E C D/C/ | B, C2 || C4 z2 | B,3 :|]
+w: Al-le-lu-ia, al-le-lu-ia, al-le-lu-ia
+V:B name="B" clef=bass
+[V:B] z2 | z2 [|: A,/A,/ | E, F, D,/A,/ | E, F, D,/D,/ | E, A,,2 || A,,4 z2 | E,3 :|]
+w: Al-le-lu-ia, al-le-lu-ia, al-le-lu-ia
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>

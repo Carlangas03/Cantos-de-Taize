@@ -28,7 +28,7 @@ body::before {
 }
 
 .container { 
-    max-width: 600px; 
+    max-width: 1000px; 
     margin: 0 auto;
     margin-bottom: 30px; 
     background: #f0faff; 
@@ -122,7 +122,7 @@ img {
 /* Estilos para el MENÚ DE NAVEGACIÓN SUPERIOR */
 /* --- Barra de Navegación Superior --- */
 .site-nav {
-    max-width: 600px; /* Mide exactamente igual que tus .container para que quede alineado */
+    max-width: 1000px; /* Mide exactamente igual que tus .container para que quede alineado */
     margin: 0 auto 20px auto; /* Centrado y con separación hacia abajo */
     display: flex;
     gap: 20px;
