@@ -1,5 +1,6 @@
 /* style.css - Estilos globales para toda la web coral */
 
+/* ESTILOS GENERALES (index y cantos): body, background y container*/
 body { 
     position: relative;
     font-family: Arial, sans-serif; 
@@ -36,6 +37,11 @@ body::before {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
 }
 
+.subparrafo {
+    margin-left: 20px; /* Crea la sangría */
+}
+
+/* Estilos de texto: títulos, enlaces, listas y párrafos */
 h1 { margin-top: 0; font-size: 24px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
 ul { list-style: none; padding: 0; }
 li { margin: 15px 0; }
@@ -47,6 +53,101 @@ img {
     height: auto;
     border-radius: 8px; /* Opcional: redondea un poco los bordes para que encaje con el estilo de la web */
 }
+
+
+
+/* Estilos para el PANEL DE TRANSPORTE: botones, texto */
+.transporte-container {
+    background: #f0faff; // mismo que el fondo de container
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.letrero-voces-transporte {
+    margin-right: 15px;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.transporte-texto {
+    min-width: 80px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff5e00;
+}
+
+.transporte-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: white;
+    color: #1e293b;
+}
+
+.transporte-btn:hover {
+    background: #ff5e00; /* Un pequeño cambio de color al pasar el ratón */
+}
+
+.transporte-btn-reset {
+    cursor: pointer;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: white;
+    color: #1e293b;
+    margin-left: auto; /* Empuja el botón de original a la derecha del todo */
+}
+
+.transporte-btn-reset:hover {
+    background: #ff5e00; /* Un pequeño cambio de color al pasar el ratón */
+}
+
+/* Estilos para el MENÚ DE NAVEGACIÓN SUPERIOR */
+/* --- Barra de Navegación Superior --- */
+.site-nav {
+    max-width: 600px; /* Mide exactamente igual que tus .container para que quede alineado */
+    margin: 0 auto 20px auto; /* Centrado y con separación hacia abajo */
+    display: flex;
+    gap: 20px;
+    padding: 10px 15px;
+    background: #f0faff; /* El mismo fondo suave de tus contenedores */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #1e293b;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: #e2e8f0;
+    color: #ff5e00; /* Tu color corporativo al pasar el ratón */
+}
+
+/* Opcional: para destacar la página en la que estás actualmente */
+.nav-link.active {
+    color: #ff5e00;
+}
+
+/* Hace que el scroll sea suave */
+html {
+    scroll-behavior: smooth;
+}
+
 
 /* Adaptación automática para pantallas de móviles */
 @media (max-width: 600px) {

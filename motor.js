@@ -21,8 +21,7 @@ function actualizarMotor() {
     if (!panelTransporte) {
         panelTransporte = document.createElement('div');
         panelTransporte.id = 'panel-transporte';
-        panelTransporte.style.cssText = 'background: #f0faff; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px;';
-        
+        panelTransporte.className = 'transporte-container'; // Usamos una clase CSS        
         // Lo insertamos justo encima del contenedor del pentagrama ("paper")
         const paper = document.getElementById('paper');
         paper.parentNode.insertBefore(panelTransporte, paper);
@@ -30,14 +29,14 @@ function actualizarMotor() {
 
     // Actualizamos los textos del panel (qué número de semitonos llevamos)
     let signo = semitonosTransporte > 0 ? '+' : '';
-    let textoTono = semitonosTransporte === 0 ? 'Tono Original' : `${signo}${semitonosTransporte} semitonos`;
+    let textoTono = semitonosTransporte === 0 ? 'Original' : `${signo}${semitonosTransporte} semitonos`;
 
     panelTransporte.innerHTML = `
-        <span style="font-weight: bold; color: #1e293b;">Transporte:</span>
-        <button onclick="cambiarTono(-1)" style="cursor: pointer; padding: 6px 15px; font-weight: bold; border-radius: 6px; border: 1px solid #ccc; background: white; color: #1e293b;">- 1</button>
-        <span style="min-width: 130px; text-align: center; font-weight: bold; color: #ff5e00;">${textoTono}</span>
-        <button onclick="cambiarTono(1)" style="cursor: pointer; padding: 6px 15px; font-weight: bold; border-radius: 6px; border: 1px solid #ccc; background: white; color: #1e293b;">+ 1</button>
-        <button onclick="resetTono()" style="cursor: pointer; padding: 6px 15px; font-weight: bold; border-radius: 6px; border: 1px solid #ccc; background: #e2e8f0; color: #1e293b; margin-left: auto;">Original</button>
+        <span class="letrero-voces-transporte">Transporte:</span>
+        <button onclick="cambiarTono(-1)" class="transporte-btn">- 1</button>
+        <span class="transporte-texto">${textoTono}</span>
+        <button onclick="cambiarTono(1)" class="transporte-btn">+ 1</button>
+        <button onclick="resetTono()" class="transporte-btn-reset">Tono original</button>
     `;
 
     // --- LÓGICA DE VOCES ACTIVAS (Sin cambios) ---
