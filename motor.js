@@ -1,8 +1,46 @@
-// motor.js - Lógica general para renderizar partituras y reproducir audio
+// motor.js - Lógica general (Ocultación dinámica y Transporte)
 
-// motor.js - Lógica general robusta (Ocultación dinámica de pentagramas y acordes mudos)
+// 1. Variable global para recordar en qué tono estamos
+let semitonosTransporte = 0;
+
+// 2. Funciones llamadas por los botones
+window.cambiarTono = function(delta) {
+    semitonosTransporte += delta;
+    actualizarMotor();
+};
+
+window.resetTono = function() {
+    semitonosTransporte = 0;
+    actualizarMotor();
+};
 
 function actualizarMotor() {
+    // --- INYECCIÓN AUTOMÁTICA DEL PANEL DE TRANSPORTE ---
+    // Si el panel no existe aún en el HTML, el motor lo crea e inserta
+    let panelTransporte = document.getElementById('panel-transporte');
+    if (!panelTransporte) {
+        panelTransporte = document.createElement('div');
+        panelTransporte.id = 'panel-transporte';
+        panelTransporte.style.cssText = 'background: #f0faff; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px;';
+        
+        // Lo insertamos justo encima del contenedor del pentagrama ("paper")
+        const paper = document.getElementById('paper');
+        paper.parentNode.insertBefore(panelTransporte, paper);
+    }
+
+    // Actualizamos los textos del panel (qué número de semitonos llevamos)
+    let signo = semitonosTransporte > 0 ? '+' : '';
+    let textoTono = semitonosTransporte === 0 ? 'Tono Original' : `${signo}${semitonosTransporte} semitonos`;
+
+    panelTransporte.innerHTML = `
+        <span style="font-weight: bold; color: #1e293b;">Transporte:</span>
+        <button onclick="cambiarTono(-1)" style="cursor: pointer; padding: 6px 15px; font-weight: bold; border-radius: 6px; border: 1px solid #ccc; background: white; color: #1e293b;">- 1</button>
+        <span style="min-width: 130px; text-align: center; font-weight: bold; color: #ff5e00;">${textoTono}</span>
+        <button onclick="cambiarTono(1)" style="cursor: pointer; padding: 6px 15px; font-weight: bold; border-radius: 6px; border: 1px solid #ccc; background: white; color: #1e293b;">+ 1</button>
+        <button onclick="resetTono()" style="cursor: pointer; padding: 6px 15px; font-weight: bold; border-radius: 6px; border: 1px solid #ccc; background: #e2e8f0; color: #1e293b; margin-left: auto;">Original</button>
+    `;
+
+    // --- LÓGICA DE VOCES ACTIVAS (Sin cambios) ---
     const comprobarVoz = (id) => {
         const checkbox = document.getElementById(id);
         return checkbox ? checkbox.checked : true;
@@ -22,26 +60,20 @@ function actualizarMotor() {
     for (let linea of lineas) {
         let lineaLimpia = linea.trim();
 
-        // 1. Si encontramos la configuración general (%%score), borramos las voces inactivas
-        // para que abcjs ni siquiera reserve el espacio del pentagrama.
         if (lineaLimpia.startsWith("%%score")) {
             if (!activas.S) linea = linea.replace(/S/g, '');
             if (!activas.A) linea = linea.replace(/A/g, '');
             if (!activas.T) linea = linea.replace(/T/g, '');
             if (!activas.B) linea = linea.replace(/B/g, '');
-            // Limpieza estética de corchetes vacíos (ej: si se quedan [] o () sueltos)
             linea = linea.replace(/\[\s*\]/g, '').replace(/\(\s*\)/g, '');
         }
 
-        // 2. Detectar qué voz estamos leyendo en este momento
         if (lineaLimpia.startsWith("V:")) {
             vozActual = lineaLimpia.charAt(2);
         } else if (lineaLimpia.startsWith("[V:")) {
             vozActual = lineaLimpia.charAt(3);
         }
 
-        // 3. LA MAGIA: Si la voz actual está desactivada, directamente IGNORAMOS todas sus líneas
-        // (tanto sus notas como su letra 'w:'). La línea no se guarda y el pentagrama desaparece.
         if (vozActual && activas[vozActual] === false) {
             continue; 
         }
@@ -51,17 +83,19 @@ function actualizarMotor() {
 
     const abcFinal = partituraProcesada.join('\n');
 
-    // 4. Renderizar la partitura visual (compactada y limpia)
+    // --- RENDERIZADO VISUAL Y SONORO ---
     document.getElementById("paper").innerHTML = "";
     document.getElementById("audio").innerHTML = "";
 
+    // 1. Dibuja la partitura transportando visualmente notas y acordes
     const visualObj = ABCJS.renderAbc("paper", abcFinal, {
         responsive: "resize",
         scale: 0.8,
-        add_classes: true
+        add_classes: true,
+        visualTranspose: semitonosTransporte // ¡Esta es la clave de todo!
     });
 
-    // 5. Preparar el audio (con chordsOff para silenciar los acordes del piano)
+    // 2. Prepara el audio
     if (ABCJS.synth.supportsAudio()) {
         const synthControl = new ABCJS.synth.SynthController();
         synthControl.load("#audio", null, {
@@ -72,12 +106,17 @@ function actualizarMotor() {
         createSynth.init({
             visualObj: visualObj[0],
             options: {
-                chordsOff: true
+                chordsOff: true,
             }
         }).then(() => {
-            synthControl.setTune(visualObj[0], false, { chordsOff: true });
+            // Pasamos midiTranspose para asegurar que el audio también se transporta
+            synthControl.setTune(visualObj[0], false, { 
+                chordsOff: true,
+                midiTranspose: semitonosTransporte
+            });
         });
     }
 }
 
+// Arrancar al inicio
 window.onload = actualizarMotor;
