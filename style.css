@@ -56,17 +56,6 @@ img {
     border-radius: 8px; /* Opcional: redondea un poco los bordes para que encaje con el estilo de la web */
 }
 
-/* Adaptación automática para pantallas de móviles */
-@media (max-width: 600px) {
-    body {
-        padding: 15px; /* Reduce el marco exterior azul en móviles */
-    }
-    .container {
-        padding: 15px; /* Reduce el espacio interior blanco para ganar anchura */
-        margin-bottom: 20px; 
-    }
-}
-
 /* Estilos para el PANEL DE TRANSPORTE: botones, texto */
 .transporte-container {
     background: #f0faff; // mismo que el fondo de container
@@ -123,49 +112,33 @@ img {
 
 /* Estilos para el MENÚ DE NAVEGACIÓN SUPERIOR */
 /* --- Barra de Navegación Superior --- */
+
 .site-nav {
     max-width: 1000px;
     position: fixed;
-    top: 20px;          /* Distancia fija desde el borde superior de la pantalla */
+    top: 30px;          /* Siempre a 30px del borde superior de la pantalla */
     left: 50%;
     transform: translateX(-50%);
     width: 68%;
-    box-sizing: border-box; /* Fundamental para que el padding no expanda el ancho */
+    box-sizing: border-box; 
     
-    /* MODIFICACIONES PARA QUE SEA IDÉNTICO AL CONTAINER */
-    padding: 25px;      /* Mismo padding interior que el container */
-    border-radius: 12px;/* Mismo redondeo de esquinas */
-    
+    padding: 25px;      
+    border-radius: 8px;
     background: #f0faff; 
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); /* Sombra unificada */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
     z-index: 1000;
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;     /* Permite que baje de línea si estrechas la ventana */
+    justify-content: center;
     
-    /* Transición suave para ocultarse/aparecer */
     transition: transform 0.6s ease-in-out; 
 }
 
-/* Estado oculto al deslizar hacia abajo */
 .site-nav.nav-oculto {
-    /* Combinamos el centrado horizontal (-50%) con el desplazamiento hacia arriba (-150%) para esconderlo */
     transform: translate(-50%, -150%); 
 }
-/* Estado oculto: desplaza el menú hacia arriba fuera de la pantalla */
-.site-nav.nav-oculto {
-    transform: translate(-50%, -120%); 
-}
 
-.site-nav {
-    max-width: 1000px; /* Mide exactamente igual que tus .container para que quede alineado */
-    margin: 0 auto 20px auto; /* Centrado y con separación hacia abajo */
-    display: flex;
-    gap: 20px;
-    padding: 10px 15px;
-    background: #f0faff; /* El mismo fondo suave de tus contenedores */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
-}
 
 .nav-link {
     text-decoration: none;
@@ -194,18 +167,14 @@ html {
 
 /* Adaptación automática del menú para móviles */
 @media (max-width: 600px) {
-    .site-nav {
-        flex-wrap: wrap;         /* Permite que los elementos bajen a la siguiente línea si no caben */
-        justify-content: center; /* Centra los botones para que quede simétrico y ordenado */
-        gap: 10px;               /* Reduce un poco la separación entre ellos */
-        padding: 8px 10px;       /* Reduce el espacio interior de la barra */
+    body {
+        padding: 15px; /* Reduce el marco exterior azul en móviles */
+        top: 100px;
     }
-
-    .nav-link {
-        font-size: 14px;         /* Reduce ligeramente el tamaño de la letra en móviles */
-        padding: 4px 8px;        /* Hace los botones más compactos */
+    .container {
+        padding: 15px; /* Reduce el espacio interior blanco para ganar anchura */
+        margin-bottom: 20px; 
     }
-
 }
 
 /* Estilos para el FOOTER */

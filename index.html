@@ -37,42 +37,7 @@
     </a>
     </footer>
 
-    
-    <script>
-        document.querySelectorAll("[data-include]").forEach(async (el) => {
-            const archivo = el.getAttribute("data-include");
-            try {
-                const respuesta = await fetch(archivo);
-                if (respuesta.ok) {
-                    const html = await respuesta.text();
-                    el.outerHTML = html; // Reemplaza el div por el contenido real del archivo
-                } else {
-                    el.innerHTML = `<p style="color:red;">No se pudo cargar ${archivo}</p>`;
-                }
-            } catch (error) {
-                console.error("Error al incluir el archivo:", error);
-            }
-        });
-    </script>
-
-    <script>
-        let ultimoScroll = 0;
-const nav = document.querySelector('.site-nav');
-
-window.addEventListener('scroll', () => {
-    const scrollActual = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Si bajamos y ya hemos avanzado un poco en la página (> 50px)
-    if (scrollActual > ultimoScroll && scrollActual > 50) {
-        nav.classList.add('nav-oculto'); // Esconde el menú hacia arriba
-    } else {
-        // Si subimos, mostramos el menú de nuevo
-        nav.classList.remove('nav-oculto');
-    }
-
-    ultimoScroll = scrollActual <= 0 ? 0 : scrollActual; // Control de seguridad para valores negativos
-});
-    </script>
+    <script src="motor.js"></script>
 
 </body>
 
