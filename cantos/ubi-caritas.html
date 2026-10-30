@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magnificat (canon)</title>
+    <title>Ubi Caritas</title>
     <!-- Librerías de ABCJS -->
     <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
     <!-- Tus estilos generales -->
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
-
 </head>
 
 <body>
     <div class="container">
         <!-- Enlace para volver -->
         <div style="margin-bottom: 20px;">
-            <a href="../index.html">← Volver al Índice</a>
+            <a href="../index.html#repertorio">← Volver al Índice</a>
         </div>
 
-        <h1>Magnificat (canon)</h1>
+        <h1>Ubi Caritas</h1>
 
         <!-- Checkboxes de voces -->
         <div style="margin-bottom: 20px;">
             <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
             <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz principal
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz aguda
             </label>
             <label id="chk-A"></label>
             <label id="chk-T"></label>
             <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz auxiliar
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz grave
             </label>
             
         </div>
@@ -45,27 +44,20 @@
     <script>
         const MI_PARTITURA = `
 X:1
-T:Magnificat
-T:"Mi alma glorifica al Señor"
-C:Lucas 1,46-55
-T:Nota: Por ahora, no sé cómo conseguir que se reproduzca como un canon
-M:C
+T:Ubi Caritas
+T:"Donde hay caridad y amor, ahí está Dios"
+C:Tradicionalmente atribuido a San Paulino de Aquilea (726 - 802)
+M:2/4
 L:1/4
-K:G
-Q: 1/4=100
+K:F
+Q: 1/4=50        
 %%score [S B]
 V:S clef=treble
-[V:S] [[1]] "G" !f! B A/G/ "C" E2 | "D" F E/F/ "G" G2 || [[2]] D D/D/ "C" E/E/ F/G/ | "D" A A  "G" G/A/ B ||
-w:Ma-gni-fi-cat, ma-gni-fi-cat, ma-gni-fi-cat a-ni-ma me-a Do-mi-num
-%
-[[3]]  B  A/G/ "C" E2 | "D7" c B/A/ "G" G2 || [[4]] d c/B/ "C" c/B/ A/G/ | "D" F2 "G" G2 :|]
-w:Ma-gni-fi-cat, ma-gni-fi-cat, ma-gni-fi-cat a-ni-ma me-a
+[V:S] !p! "F" A/A/ "C" G/G/ | "Dm" F z/2 F/2 | "Bb" B "D" A | "G" G2 "C" | "F" A/A/ "C" G/G/ | "Dm" F2 | "Gm" D/D/ "C" (3:2:3E/D/E/ | "F" F2 :|]
+w:U-bi Ca-ri-tas et A- _ mor U-bi Ca-ri-tas De-us i- _ bi est
 V:B clef=treble
-[V:B] !p![[1]] G2 G2 | A2 B2 || [[2]] d2 (c B) | A2 B2 ||
-w: Ma-gni-fi-cat, ma-gni- _ fi-cat, 
-%
-[[3]] d d (e/d/) c/B/ | A d B2 || [[4]] B B (c/B/) A/G/ | F/E/ F G2 :|]
-w:a-ni-ma _ me-a Do-mi-num, a-ni-ma _ me-a Do- _ mi-num
+[V:B] F/F/ C/C/ | D z/2 C/2 | B,- D | D- C | F/F/ C/C/ | D2 |D/D/ C/C/ | [CF,]2 :|]
+w:U-bi Ca-ri-tas et A- _ mor _ U-bi Ca-ri-tas De-us i-bi est
 `;
     </script>
 

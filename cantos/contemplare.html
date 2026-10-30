@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contemplaré (<i>Wait for the Lord</i>)</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>Contemplaré (<i>Wait for the Lord</i>)</h1>
+
+        <!-- Checkboxes de voces -->
+        <div style="margin-bottom: 20px;">
+            <span class="letrero-voces-transporte">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Contemplaré (Wait for the Lord)
+T:Letra original: Wait for the Lord, whose day is near. 
+T:Wait for the Lord: keep watch, take heart!
+T:La letra en castellano es la oficial.
+M:C
+L:1/4
+K:G
+Q: 1/2=48        
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S]  G2 G3/2 E/ | G2 z G | F2 F2 | F3 z | G2 A3/2 A/ | B2 z B | c2 B2 | E3 z :|]
+w: Con-tem-pla-ré tu vi-da~en mí. Con-tem-pla-ré, Se-ñor tu~a-mor.
+V:A name="C" clef=treble
+[V:A] E2 E3/2 E/ | E2 z E | E2 E2 | ^D3 z | E2 F3/2 F/ | G2 z G | E2 ^D2 | E3 z :|]
+w: Con-tem-pla-ré tu vi-da~en mí. Con-tem-pla-ré, Se-ñor tu~a-mor.
+V:T name="T" clef=bass
+[V:T] B,2 B,3/2 B,/ | C2 z C | C2 C2 | B,3 z | B,2 D3/2 D/ | D2 z G, | (A,G,) F,2 | G,3 z :|]
+w: Con-tem-pla-ré tu vi-da~en mí. Con-tem-pla-ré, Se-ñor _ tu~a-mor.
+V:B name="B" clef=bass
+[V:B] E,2 E,3/2 E,/ | C,2 z C, | A,,2 A,,2 | B,,3 z | E,2 D,3/2 D,/ | G,2 z E, | A,,2 B,,2 | E,3 z :|]
+w: Con-tem-pla-ré tu vi-da~en mí. Con-tem-pla-ré, Se-ñor tu~a-mor.
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>

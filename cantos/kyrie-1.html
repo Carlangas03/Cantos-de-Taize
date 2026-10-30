@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Kyrie eleison 1</title>
+    <!-- Importar abcjs desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background: #b3daff;">
+
+    
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>Kyrie 1</h1>
+
+        <!-- Checkboxes de voces -->
+         <div style="margin-bottom: 20px;">
+            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+    <script>
+        // =====================================================================
+        // ZONA DE DATOS (LA PLANTILLA)
+        // -> Solo necesitas modificar este bloque de texto para cada canción.
+        // =====================================================================
+        
+        const MI_PARTITURA = `
+X:1
+T:Kyrie 1
+T:"Señor, ten piedad"
+T:Esta versión alarga la sílaba "-son" para hacer la partitura completamente en 2/4.
+M:2/4
+L:1/4
+K:G
+Q: 1/4=90        
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] "G" B/c/ "(D)" d | "Em" G/A/ "(Bm)" B | "C" E/ G "D"  F/ | "G" G2 | B/c/ "(D)" d | "Em" G/A/ "(Bm)" B | "C" E/ G "C" F/ | "G" G2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+V:A name="C" clef=treble
+G/G/ F | E/E/ F | E/ E D/ | D2 | G/G/ F | E/E/ F | E/ E D/ | D2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+[V:A] 
+V:T name="T" clef=bass
+D/E/ D | B,/C/ D | C/ B, A,/ | B,2 | D/E/ D | B,/C/ D | C/ B, A,/ | B,2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+[V:T] 
+V:B name="B" clef=bass
+[V:B] 
+G,/G,/ D, | E,/E,/ B,, | C,/ C, D,/ | G,,2 | G,/G,/ D, | E,/E,/ B,, | C,/ C, D,/ | G,,2 |]
+w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
+`;
+</script>
+<script src="../motor.js"></script>
+</body>
+</html>
+

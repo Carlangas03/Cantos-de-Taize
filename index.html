@@ -26,7 +26,7 @@
     <!-- Sección de REPERTORIO -->
     <div data-include="secciones/Repertorio.html"></div>
     <!-- Sección de ORACIÓN -->
-    <div data-include="secciones/Oracion.html"></div>   
+    <div style="background-image: url('imagenes/cruz-taize-2.png')" data-include="secciones/Oracion.html"></div>   
     <!-- Sección de ENSAYO -->
     <div data-include="secciones/Ensayo.html"></div>
 
@@ -53,6 +53,25 @@
                 console.error("Error al incluir el archivo:", error);
             }
         });
+    </script>
+
+    <script>
+        let ultimoScroll = 0;
+const nav = document.querySelector('.site-nav');
+
+window.addEventListener('scroll', () => {
+    const scrollActual = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Si bajamos y ya hemos avanzado un poco en la página (> 50px)
+    if (scrollActual > ultimoScroll && scrollActual > 50) {
+        nav.classList.add('nav-oculto'); // Esconde el menú hacia arriba
+    } else {
+        // Si subimos, mostramos el menú de nuevo
+        nav.classList.remove('nav-oculto');
+    }
+
+    ultimoScroll = scrollActual <= 0 ? 0 : scrollActual; // Control de seguridad para valores negativos
+});
     </script>
 
 </body>

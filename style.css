@@ -10,6 +10,7 @@ body {
     margin: 0;
     min-height: 100vh;
     box-sizing: border-box;
+    top: 15px;
 }
 
 /* Capa de la imagen de fondo con transparencia para todo el sitio */
@@ -30,6 +31,7 @@ body::before {
 .container { 
     max-width: 1000px; 
     margin: 0 auto;
+    margin-top: 30px;
     margin-bottom: 30px; 
     background: #f0faff; 
     padding: 25px; 
@@ -122,6 +124,39 @@ img {
 /* Estilos para el MENÚ DE NAVEGACIÓN SUPERIOR */
 /* --- Barra de Navegación Superior --- */
 .site-nav {
+    max-width: 1000px;
+    position: fixed;
+    top: 20px;          /* Distancia fija desde el borde superior de la pantalla */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 68%;
+    box-sizing: border-box; /* Fundamental para que el padding no expanda el ancho */
+    
+    /* MODIFICACIONES PARA QUE SEA IDÉNTICO AL CONTAINER */
+    padding: 25px;      /* Mismo padding interior que el container */
+    border-radius: 12px;/* Mismo redondeo de esquinas */
+    
+    background: #f0faff; 
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); /* Sombra unificada */
+    z-index: 1000;
+    display: flex;
+    gap: 20px;
+    
+    /* Transición suave para ocultarse/aparecer */
+    transition: transform 0.6s ease-in-out; 
+}
+
+/* Estado oculto al deslizar hacia abajo */
+.site-nav.nav-oculto {
+    /* Combinamos el centrado horizontal (-50%) con el desplazamiento hacia arriba (-150%) para esconderlo */
+    transform: translate(-50%, -150%); 
+}
+/* Estado oculto: desplaza el menú hacia arriba fuera de la pantalla */
+.site-nav.nav-oculto {
+    transform: translate(-50%, -120%); 
+}
+
+.site-nav {
     max-width: 1000px; /* Mide exactamente igual que tus .container para que quede alineado */
     margin: 0 auto 20px auto; /* Centrado y con separación hacia abajo */
     display: flex;
@@ -171,4 +206,15 @@ html {
         padding: 4px 8px;        /* Hace los botones más compactos */
     }
 
+}
+
+/* Estilos para el FOOTER */
+footer a {
+    color: #ff5e00;          /* Color corporativo */
+    text-decoration: none;   /* Elimina el subrayado por defecto */
+    font-weight: bold;       /* Negrita para destacar */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Subraya al pasar el ratón */
 }

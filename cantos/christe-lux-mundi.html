@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christe, lux mundi</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>Christe, lux mundi</h1>
+
+        <!-- Checkboxes de voces -->
+        <div style="margin-bottom: 20px;">
+            <span class="letrero-voces-transporte">Voces Activas:</span>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
+            </label>
+            <label style="margin-right: 15px; cursor: pointer;">
+                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
+            </label>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Christe, lux mundi
+T:"Cristo, luz del mundo, quien te sigue tendrá la luz de la vida"
+M:C
+L:1/4
+K:F
+Q: 1/4=58        
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] D D/F/ E D/D/ | F/F/ G A3/2 A/ | A/A/ d/d/ c G | B/A/ F G2 :|]
+w: Chris-te lux mun-di, qui se-qui-tur te ha-be-bit lu-men vi-tae, lu-men vi-tae.
+V:A name="C" clef=treble
+[V:A] D D/D/ (D/C/) D/D/ | D/D/ D C3/2 C/| F/F/ F/F/ E D | D/D/ D E2 :|]
+w: Chris-te lux mun- _ di, qui se-qui-tur te ha-be-bit lu-men vi-tae, lu-men vi-tae.
+V:T name="T" clef=bass
+[V:T] A, A,/A,/ A, A,/A,/ | A,/A,/ G, E,3/2 F,/ | C/C/ B,/B,/ G, G, | G,/F,/ A, C2 :|]
+w: Chris-te lux mun-di, qui se-qui-tur te ha-be-bit lu-men vi-tae, lu-men vi-tae.
+V:B name="B" clef=bass
+[V:B] D, D,/D,/ A, D,/D,/ | C,/C,/ B,, A,,3/2 F,/ | F,/F,/ B,,/B,,/ C, B,, | G,,/A,,/ D, C,2 :|]
+w: Chris-te lux mun-di, qui se-qui-tur te ha-be-bit lu-men vi-tae, lu-men vi-tae.
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>
