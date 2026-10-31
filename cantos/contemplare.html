@@ -23,21 +23,12 @@
         <h1>Contemplaré (<i>Wait for the Lord</i>)</h1>
 
         <!-- Checkboxes de voces -->
-        <div>
-            <span class="letrero-voces-transporte">Voces Activas:</span>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
-            </label>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-A" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Contralto
-            </label>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-T" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Tenor
-            </label>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Bajo
-            </label>
-            
+        <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
+            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
         </div>
 
         <!-- Contenedores de la partitura y reproductor -->

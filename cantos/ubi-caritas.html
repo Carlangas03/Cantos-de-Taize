@@ -22,19 +22,14 @@
         <h1>Ubi Caritas</h1>
 
         <!-- Checkboxes de voces -->
-        <div>
-            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz aguda
-            </label>
+        <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Voz aguda</label>
             <label id="chk-A"></label>
             <label id="chk-T"></label>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz grave
-            </label>
-            
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Voz grave</label>
         </div>
-
+        
         <!-- Contenedores de la partitura y reproductor -->
         <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
         <div id="audio" style="margin-top: 15px;"></div>

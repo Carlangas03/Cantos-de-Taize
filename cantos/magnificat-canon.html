@@ -23,17 +23,12 @@
         <h1>Magnificat (canon)</h1>
 
         <!-- Checkboxes de voces -->
-        <div>
-            <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz principal
-            </label>
+        <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Voz principal</label>
             <label id="chk-A"></label>
             <label id="chk-T"></label>
-            <label style="margin-right: 15px; cursor: pointer;">
-                <input type="checkbox" id="chk-B" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz auxiliar
-            </label>
-            
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Voz auxiliar</label>
         </div>
 
         <!-- Contenedores de la partitura y reproductor -->
