@@ -20,6 +20,7 @@
     --width-nav: 80%; /* Ancho del menú de navegación */
     --max-width-container: 1000px; /* Ancho máximo de los contenedores */
 
+    --gap-botones: 10px;
     --gap-menu: 20px; /* Espacio entre los enlaces del menú de navegación */
     --gap-menu-mobile: 10px; /* Espacio entre los enlaces del menú de navegación en móviles */
 
@@ -213,17 +214,19 @@ html {
 
 /* Estilos para el PANEL DE TRANSPORTE: botones, texto */
 .transporte-container {
+    display: flex;
     padding: var(--padding-general);
     border-radius: var(--border-radius-general);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--gap-menu); /* Espacio entre los elementos del panel */
+    gap: var(--gap-botones); /* Espacio entre los elementos del panel */
 }
 
 .letrero-voces-transporte {
-    margin: 15px;
+    display: flex;
+    margin: 0px;
     font-weight: bold;
     color: var(--color-texto);
     font-size: var(--size-voces-activas-transporte);
@@ -263,11 +266,10 @@ html {
     margin-left: auto; /* Empuja el botón de original a la derecha del todo */
     font-size: var(--size-texto-botones);
 }
-
-.transporte-btn-reset:hover {
-    background: var(--color-acento); /* Un pequeño cambio de color al pasar el ratón */
-    color: white; /* Cambia el color del texto al pasar el ratón */
-}
+    .transporte-btn-reset:hover {
+        background: var(--color-acento); /* Un pequeño cambio de color al pasar el ratón */
+        color: white; /* Cambia el color del texto al pasar el ratón */
+    }
 
 
 
