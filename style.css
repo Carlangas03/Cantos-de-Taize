@@ -1,4 +1,12 @@
 /* style.css - Estilos globales para toda la web coral */
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit; /* Heredan la norma de arriba */
+}
+
+/*****************************************************************************/
 /* Variables de estilo */
 :root {
 
@@ -37,7 +45,7 @@
     --border-radius-mobile: 10px;
 
     --border-btn: 2px solid var(--color-border-btn); /* Borde para los botones */
-    --boder-radius-btn: 6px; /* Radio de borde para los botones */
+    --border-radius-btn: 6px; /* Radio de borde para los botones */
 
     /* Texto  */
     /* página principal */
@@ -61,6 +69,7 @@
     --padding-botones: 5px 10px; /* Espaciado interno de los botones */
 }
 
+/*****************************************************************************/
 img {
     box-shadow: var(--sombra);
 }
@@ -93,9 +102,7 @@ body::before {
 .container { 
     width: var(--width-container);
     max-width: var(--max-width-container); 
-    margin: var(--margin-horizontal-general);
-    margin-top: var(--margin-vertical-general);
-    margin-bottom: var(--margin-vertical-general); 
+    margin: var(--margin-vertical-general) auto; 
     background: var(--color-container); 
     padding: var(--padding-container-general); 
     border-radius: var(--border-radius-general); 
@@ -104,32 +111,13 @@ body::before {
     box-sizing: border-box;
 }
 
-/* Adaptación automática del menú para móviles */
-@media (max-width: var(--ancho-mobile)) {
-    .container {
-        padding: var(--padding-container-mobile); /* Reduce el espacio interior blanco para ganar anchura */
-        margin: var(--margin-horizontal-mobile); /* Mantiene el margen horizontal */
-        margin-bottom: var(--margin-vertical-mobile);
-        margin-top: var(--margin-vertical-mobile); 
-    }
-
-    .site-nav {
-        padding: var(--padding-container-mobile); /* Reduce el espacio interior blanco para ganar anchura */
-        top: 20px;/* Ajusta la posición superior del menú para móviles */
-        gap: var(--gap-menu-mobile); /* Reduce el espacio entre los enlaces del menú para móviles */
-    }
-
-    li {
-        margin: var(--sangria-subparrafo-mobile); /* Reduce la sangría para móviles */
-    }
-}
-
 .repertorio {
     font-size: var(--size-repertorio); /* Tamaño de fuente para el repertorio */
 }
 
 .subparrafo {
     margin-left: var(--sangria-subparrafo-general); /* Crea la sangría */
+    text-align: justify;
 }
 
 /* Estilos de texto: títulos, enlaces, listas y párrafos */
@@ -151,7 +139,7 @@ a { text-decoration: none;
 p { text-align: justify; 
     font-size: var(--size-general); }
 img {
-    max-width: var(--width-container);
+    max-width: 100%;
     height: auto;
     border-radius: var(--border-radius-general); /* Opcional: redondea un poco los bordes para que encaje con el estilo de la web */
 }
@@ -210,9 +198,36 @@ html {
     scroll-behavior: smooth;
 }
 
+/*****************************************************************************/
+/* Estilos para el SELECTOR DE VOCES ACTIVAS */
+/* El contenedor general en ordenador (en línea) */
+.voces-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; /* Reemplaza el margin-right que tenías antes */
+    margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas de las voces */
+.voces-container label {
+    cursor: pointer;
+    font-size: var(--size-voces-activas-transporte);
+    color: var(--color-texto);
+    font-weight: normal;
+}
+
+/* El color corporativo de los checkboxes usando tu variable --color-acento */
+.voces-container input[type="checkbox"] {
+    accent-color: var(--color-acento);
+    cursor: pointer;
+}
 
 
+/*****************************************************************************/
 /* Estilos para el PANEL DE TRANSPORTE: botones, texto */
+/* Estilo para el contenedor del panel y los botones */
 .transporte-container {
     display: flex;
     padding: var(--padding-general);
@@ -224,15 +239,19 @@ html {
     gap: var(--gap-botones); /* Espacio entre los elementos del panel */
 }
 
+/* Estilo para el letrero "Transporte", homólogo a "Voces activas" */
 .letrero-voces-transporte {
     display: flex;
-    margin: 0px;
+    margin: 15px;
     font-weight: bold;
     color: var(--color-texto);
     font-size: var(--size-voces-activas-transporte);
 }
 
+/* Estilo para el letrero que indica el tono actual: "+- n semitonos" u "Original" */
 .transporte-texto {
+    width: 100px;                 /* <--- Ancho fijo estricto (reserva el espacio para el texto más largo) */
+    flex-shrink: 0;
     min-width: var(--min-width-transporte-texto);
     text-align: center;
     font-weight: bold;
@@ -240,11 +259,12 @@ html {
     font-size: var(--size-tono-actual);
 }
 
+/* Botones +1 y -1 */
 .transporte-btn {
     cursor: pointer;
     padding: var(--padding-botones);
     font-weight: bold;
-    border-radius: var(--boder-radius-btn);
+    border-radius: var(--border-radius-btn);
     border: var(--border-btn);
     background: var(--color-background-btn);
     color: var(--color-texto);
@@ -255,11 +275,12 @@ html {
         color: white; /* Cambia el color del texto al pasar el ratón */
     }
 
+/* Botón "Tono original" */
 .transporte-btn-reset {
     cursor: pointer;
     padding: var(--padding-botones);
     font-weight: bold;
-    border-radius: var(--boder-radius-btn);
+    border-radius: var(--border-radius-btn);
     border: var(--border-btn);
     background: var(--color-background-btn);
     color: var(--color-texto);
@@ -271,9 +292,7 @@ html {
         color: white; /* Cambia el color del texto al pasar el ratón */
     }
 
-
-
-
+/*****************************************************************************/
 /* Estilos para el FOOTER */
 footer a {
     color: var(--color-acento);          /* Color corporativo */
@@ -283,4 +302,67 @@ footer a {
 
 footer a:hover {
     text-decoration: underline; /* Subraya al pasar el ratón */
+}
+
+/*****************************************************************************/
+/* Adaptación automática del menú para móviles */
+@media (max-width: 640px) {
+    .container {
+        padding: var(--padding-container-mobile); /* Reduce el espacio interior blanco para ganar anchura */
+        margin: var(--margin-horizontal-mobile); /* Mantiene el margen horizontal */
+        margin-bottom: var(--margin-vertical-mobile);
+        margin-top: var(--margin-vertical-mobile); 
+    }
+
+    .site-nav {
+        padding: var(--padding-container-mobile); /* Reduce el espacio interior blanco para ganar anchura */
+        top: 20px;/* Ajusta la posición superior del menú para móviles */
+        gap: var(--gap-menu-mobile); /* Reduce el espacio entre los enlaces del menú para móviles */
+    }
+
+    li {
+        margin: var(--sangria-subparrafo-mobile); /* Reduce la sangría para móviles */
+    }
+
+    /* 1. Convertimos el contenedor de transporte en una columna vertical */
+    .transporte-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; /* Estira los elementos para que formen una columna uniforme */
+        gap: 10px;            /* Espacio vertical limpio entre cada elemento */
+    }
+
+    /* 2. El título "Transporte:" alineado arriba */
+    .letrero-voces-transporte {
+        text-align: left;
+        width: 100%;
+    }
+
+    /* 3. El texto que indica la tonalidad actual ("Original", "+1 semitono", etc.) CENTRADO */
+    .transporte-texto {
+        text-align: center;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    /* 4. Todos los botones de transporte en columna ocupando el ancho */
+    .transporte-btn, 
+    .transporte-btn-reset {
+        width: 100%;
+        margin-left: 0;      /* Anulamos el truco de escritorio que lo empujaba a la derecha */
+        text-align: center;
+    }
+
+    .voces-container {
+        flex-direction: column;  /* Pone los elementos en columna vertical */
+        align-items: flex-start; /* Los alinea ordenadamente a la izquierda */
+        gap: 10px;
+        padding-left: 30px;               /* Espacio vertical limpio entre cada voz */
+    }
+
+    /* Opcional: aseguramos que el letrero "Voces Activas:" ocupe su propia línea si lo deseas */
+    .voces-container .letrero-voces-transporte {
+        width: 100%;
+        margin-bottom: 5px;
+    }
 }

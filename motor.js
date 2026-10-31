@@ -39,7 +39,7 @@ function actualizarMotor() {
 
     // PANEL DE TRANSPORTE: Botones y texto
     panelTransporte.innerHTML = `
-        <span class="letrero-voces-transporte">Transporte:</span>
+        <span class="letrero-voces-transporte">Transporte</span>
         <button onclick="cambiarTono(-1)" class="transporte-btn">- 1</button>
         <span class="transporte-texto">${textoTono}</span>
         <button onclick="cambiarTono(1)" class="transporte-btn">+ 1</button>
