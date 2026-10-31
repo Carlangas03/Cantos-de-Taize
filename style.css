@@ -1,16 +1,77 @@
 /* style.css - Estilos globales para toda la web coral */
+/* Variables de estilo */
+:root {
+
+    /* Colores */
+    --color-fondo: #b3daff; /* Color de fondo base */
+    --color-texto: #1e293b; /* Color de texto principal */
+    --color-acento: #ff5e00; /* Color corporativo/acento */
+    --color-container: #f0faff; /* Fondo de los contenedores */
+    --color-background-link-hover: #e2e8f0; /* Color de fondo al pasar el ratón sobre los enlaces */
+    --color-border-btn: var(--color-background-link-hover); /* Color del borde de los botones */
+    --color-background-btn: white; /* Color de fondo de los botones */
+    
+    --opacidad-general: 0.2;
+    --color-sombra: rgba(0, 0, 0, var(--opacidad-general)); 
+    --sombra: 0 5px 5px 1px var(--color-sombra); /* Sombra para los contenedores y el menú de navegación */
+
+    /* Dimensiones y espaciado */
+    --width-container: 90%; /* Ancho de los contenedores */
+    --width-nav: 80%; /* Ancho del menú de navegación */
+    --max-width-container: 1000px; /* Ancho máximo de los contenedores */
+
+    --gap-menu: 20px; /* Espacio entre los enlaces del menú de navegación */
+    --gap-menu-mobile: 10px; /* Espacio entre los enlaces del menú de navegación en móviles */
+
+    --ancho-mobile: 600px; /* Ancho máximo para dispositivos móviles */
+    --margin-vertical-general: 30px;
+    --margin-vertical-mobile: 20px;
+    --margin-horizontal-general: 0px auto;
+    --margin-horizontal-mobile: var(--margin-horizontal-general);
+    --padding-general: 15px;
+    --padding-mobile: 10px;
+    --padding-container-general: 25px;
+    --padding-container-mobile: 15px;
+    --border-radius-general: 15px;
+    --border-radius-mobile: 10px;
+
+    --border-btn: 2px solid var(--color-border-btn); /* Borde para los botones */
+    --boder-radius-btn: 6px; /* Radio de borde para los botones */
+
+    /* Texto  */
+    /* página principal */
+    --size-h1: 24px;
+    --size-nav: 18px;
+    --size-general: 16px;
+    --size-repertorio: 18px; /* Tamaño de fuente para el repertorio */
+
+    /* Página para canto */
+    --size-return-index: var(--size-nav); /* Tamaño de fuente para el enlace de retorno a la página principal */
+    --size-voces-activas-transporte: var(--size-general); /* Tamaño de fuente para "Voces activas" y "Transporte" */
+    --size-texto-botones: var(--size-general); /* Tamaño de fuente para los botones de transporte: "+ 1", "- 1", "Tono original" */
+    --size-tono-actual: var(--size-general); /* "Original", "+ n semitonos", "- n semitonos" */
+
+    --linea-subrayado-titulos: 2px solid var(--color-background-link-hover); /* Línea de subrayado para títulos */
+
+    --sangria-subparrafo-general: 20px; /* Sangría para subpárrafos */
+    --sangria-subparrafo-mobile: 10px; /* Sangría para subpárrafos en móviles */
+
+    /* Botones */
+    --padding-botones: 5px 10px; /* Espaciado interno de los botones */
+}
+
+img {
+    box-shadow: var(--sombra);
+}
 
 /* ESTILOS GENERALES (index y cantos): body, background y container*/
 body { 
     position: relative;
     font-family: Arial, sans-serif; 
-    background: #b3daff; /* Color de fondo base */
-    padding: 40px; 
-    color: #1e293b; 
-    margin: 0;
+    background: var(--color-fondo); /* Color de fondo base */
+    color: var(--color-texto); 
     min-height: 100vh;
     box-sizing: border-box;
-    top: 15px;
 }
 
 /* Capa de la imagen de fondo con transparencia para todo el sitio */
@@ -24,111 +85,95 @@ body::before {
     background-image: url('imagenes/cruz-taize.png'); /* Ruta de la imagen en la raíz */
     background-size: cover;
     background-position: center;
-    opacity: 0.15; 
+    opacity: var(--opacidad-general); 
     z-index: -1; 
 }
 
 .container { 
-    max-width: 1000px; 
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px; 
-    background: #f0faff; 
-    padding: 25px; 
-    border-radius: 12px; 
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
+    width: var(--width-container);
+    max-width: var(--max-width-container); 
+    margin: var(--margin-horizontal-general);
+    margin-top: var(--margin-vertical-general);
+    margin-bottom: var(--margin-vertical-general); 
+    background: var(--color-container); 
+    padding: var(--padding-container-general); 
+    border-radius: var(--border-radius-general); 
+    box-shadow:  var(--sombra); 
+    font-size: var(--size-general);
+    box-sizing: border-box;
+}
+
+/* Adaptación automática del menú para móviles */
+@media (max-width: var(--ancho-mobile)) {
+    .container {
+        padding: var(--padding-container-mobile); /* Reduce el espacio interior blanco para ganar anchura */
+        margin: var(--margin-horizontal-mobile); /* Mantiene el margen horizontal */
+        margin-bottom: var(--margin-vertical-mobile);
+        margin-top: var(--margin-vertical-mobile); 
+    }
+
+    .site-nav {
+        padding: var(--padding-container-mobile); /* Reduce el espacio interior blanco para ganar anchura */
+        top: 20px;/* Ajusta la posición superior del menú para móviles */
+        gap: var(--gap-menu-mobile); /* Reduce el espacio entre los enlaces del menú para móviles */
+    }
+
+    li {
+        margin: var(--sangria-subparrafo-mobile); /* Reduce la sangría para móviles */
+    }
+}
+
+.repertorio {
+    font-size: var(--size-repertorio); /* Tamaño de fuente para el repertorio */
 }
 
 .subparrafo {
-    margin-left: 20px; /* Crea la sangría */
+    margin-left: var(--sangria-subparrafo-general); /* Crea la sangría */
 }
 
 /* Estilos de texto: títulos, enlaces, listas y párrafos */
-h1 { margin-top: 0; font-size: 24px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
-ul { list-style: none; padding: 0; }
-li { margin: 15px 0; }
-a { text-decoration: none; color: #ff5e00; font-weight: bold; font-size: 18px; }
-a:hover { text-decoration: underline; color: #ff5e00; }
-p { text-align: justify; }
+h1 { margin-top: 0; 
+    font-size: var(--size-h1); 
+    border-bottom: var(--linea-subrayado-titulos); 
+    padding: var(--padding-general); }
+ul { list-style: none; 
+    padding: var(--padding-general); }
+li { margin: var(--sangria-subparrafo-general); }
+a { text-decoration: none; 
+    color: var(--color-acento); 
+    font-weight: bold; 
+    font-size: var(--size-general); }
+    a:hover { 
+        text-decoration: underline; 
+        color: var(--color-acento);
+    }
+p { text-align: justify; 
+    font-size: var(--size-general); }
 img {
-    max-width: 100%;
+    max-width: var(--width-container);
     height: auto;
-    border-radius: 8px; /* Opcional: redondea un poco los bordes para que encaje con el estilo de la web */
+    border-radius: var(--border-radius-general); /* Opcional: redondea un poco los bordes para que encaje con el estilo de la web */
 }
 
-/* Estilos para el PANEL DE TRANSPORTE: botones, texto */
-.transporte-container {
-    background: #f0faff; // mismo que el fondo de container
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.letrero-voces-transporte {
-    margin-right: 15px;
-    font-weight: bold;
-    color: #1e293b;
-}
-
-.transporte-texto {
-    min-width: 80px;
-    text-align: center;
-    font-weight: bold;
-    color: #ff5e00;
-}
-
-.transporte-btn {
-    cursor: pointer;
-    padding: 5px 10px;
-    font-weight: bold;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background: white;
-    color: #1e293b;
-}
-
-.transporte-btn:hover {
-    background: #ff5e00; /* Un pequeño cambio de color al pasar el ratón */
-}
-
-.transporte-btn-reset {
-    cursor: pointer;
-    padding: 5px 15px;
-    font-weight: bold;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background: white;
-    color: #1e293b;
-    margin-left: auto; /* Empuja el botón de original a la derecha del todo */
-}
-
-.transporte-btn-reset:hover {
-    background: #ff5e00; /* Un pequeño cambio de color al pasar el ratón */
-}
 
 /* Estilos para el MENÚ DE NAVEGACIÓN SUPERIOR */
 /* --- Barra de Navegación Superior --- */
-
 .site-nav {
-    max-width: 1000px;
+    max-width: var(--max-width-container);
+    width: var(--width-nav);
     position: fixed;
-    top: 30px;          /* Siempre a 30px del borde superior de la pantalla */
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 68%;
     box-sizing: border-box; 
     
-    padding: 25px;      
-    border-radius: 8px;
-    background: #f0faff; 
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
+    padding: var(--padding-container-general);      
+    border-radius: var(--border-radius-general);
+    background: var(--color-container); 
+    box-shadow: var(--sombra);
     z-index: 1000;
     display: flex;
-    gap: 20px;
+    gap: var(--gap-menu);          /* Espacio entre los enlaces */
     flex-wrap: wrap;     /* Permite que baje de línea si estrechas la ventana */
     justify-content: center;
     
@@ -142,22 +187,21 @@ img {
 
 .nav-link {
     text-decoration: none;
-    color: #1e293b;
+    color: var(--color-texto);
     font-weight: bold;
-    font-size: 15px;
-    padding: 5px 10px;
+    font-size: var(--size-nav);
+    padding: var(--padding-botones);
     border-radius: 4px;
     transition: background 0.2s, color 0.2s;
 }
-
-.nav-link:hover {
-    background: #e2e8f0;
-    color: #ff5e00; /* Tu color corporativo al pasar el ratón */
-}
+    .nav-link:hover {
+        background: var(--color-background-link-hover);
+        color: var(--color-acento); /* Tu color corporativo al pasar el ratón */
+    }
 
 /* Opcional: para destacar la página en la que estás actualmente */
 .nav-link.active {
-    color: #ff5e00;
+    color: var(--color-acento);
 }
 
 /* Hace que el scroll sea suave */
@@ -165,21 +209,72 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Adaptación automática del menú para móviles */
-@media (max-width: 600px) {
-    body {
-        padding: 15px; /* Reduce el marco exterior azul en móviles */
-        top: 100px;
-    }
-    .container {
-        padding: 15px; /* Reduce el espacio interior blanco para ganar anchura */
-        margin-bottom: 20px; 
-    }
+
+
+/* Estilos para el PANEL DE TRANSPORTE: botones, texto */
+.transporte-container {
+    padding: var(--padding-general);
+    border-radius: var(--border-radius-general);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--gap-menu); /* Espacio entre los elementos del panel */
 }
+
+.letrero-voces-transporte {
+    margin: 15px;
+    font-weight: bold;
+    color: var(--color-texto);
+    font-size: var(--size-voces-activas-transporte);
+}
+
+.transporte-texto {
+    min-width: var(--min-width-transporte-texto);
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-acento);
+    font-size: var(--size-tono-actual);
+}
+
+.transporte-btn {
+    cursor: pointer;
+    padding: var(--padding-botones);
+    font-weight: bold;
+    border-radius: var(--boder-radius-btn);
+    border: var(--border-btn);
+    background: var(--color-background-btn);
+    color: var(--color-texto);
+    font-size: var(--size-texto-botones);
+}
+    .transporte-btn:hover {
+        background: var(--color-acento); /* Un pequeño cambio de color al pasar el ratón */
+        color: white; /* Cambia el color del texto al pasar el ratón */
+    }
+
+.transporte-btn-reset {
+    cursor: pointer;
+    padding: var(--padding-botones);
+    font-weight: bold;
+    border-radius: var(--boder-radius-btn);
+    border: var(--border-btn);
+    background: var(--color-background-btn);
+    color: var(--color-texto);
+    margin-left: auto; /* Empuja el botón de original a la derecha del todo */
+    font-size: var(--size-texto-botones);
+}
+
+.transporte-btn-reset:hover {
+    background: var(--color-acento); /* Un pequeño cambio de color al pasar el ratón */
+    color: white; /* Cambia el color del texto al pasar el ratón */
+}
+
+
+
 
 /* Estilos para el FOOTER */
 footer a {
-    color: #ff5e00;          /* Color corporativo */
+    color: var(--color-acento);          /* Color corporativo */
     text-decoration: none;   /* Elimina el subrayado por defecto */
     font-weight: bold;       /* Negrita para destacar */
 }

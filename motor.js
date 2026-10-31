@@ -36,6 +36,8 @@ function actualizarMotor() {
     let signo = transporteActual > 0 ? '+' : '';
     let textoTono = transporteActual === 0 ? 'Original' : `${signo}${transporteActual} semitonos`;
 
+
+    // PANEL DE TRANSPORTE: Botones y texto
     panelTransporte.innerHTML = `
         <span class="letrero-voces-transporte">Transporte:</span>
         <button onclick="cambiarTono(-1)" class="transporte-btn">- 1</button>
@@ -157,6 +159,13 @@ function ajustarEspacioInicio() {
     const espacioMenuAbajo = 0; // Por ahora no añadimos espacio, para que no se sume al margin-top del container
 
     const paddingTotalBody = espacioMenuArriba + alturaMenu + espacioMenuAbajo;
+
+    console.log("=== DEPURACIÓN PADDING-TOP ===");
+    console.log("espacioMenuArriba:", espacioMenuArriba);
+    console.log("alturaMenu:", alturaMenu);
+    console.log("espacioMenuAbajo:", espacioMenuAbajo);
+    console.log("=> paddingTotalBody:", paddingTotalBody);
+
 
     document.body.style.paddingTop = paddingTotalBody + 'px'; // CORREGIDO el nombre de la variable
 }

@@ -16,14 +16,14 @@
 <body>
     <div class="container">
         <!-- Enlace para volver -->
-        <div style="margin-bottom: 20px;">
+        <div>
             <a href="../index.html#repertorio">← Volver al Índice</a>
         </div>
 
         <h1>Magnificat (canon)</h1>
 
         <!-- Checkboxes de voces -->
-        <div style="margin-bottom: 20px;">
+        <div>
             <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
             <label style="margin-right: 15px; cursor: pointer;">
                 <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Voz principal
@@ -41,14 +41,20 @@
         <div id="audio" style="margin-top: 15px;"></div>
     </div>
 
+    <div class="container">
+        <h1>Notas</h1>
+        <p class="letrero-voces-transporte">Traducción:</p>
+        <p class="subparrafo">Mi alma glorifica al Señor (Lucas 1,46-55).</p>
+        <p>Lo ideal sería que el reproductor hiciese el canon, pero no sé cómo conseguirlo. Por ahora, solo hace la voz auxiliar. Por tanto, recomendamos escucharlo desde la página de los hermanos de Taizé: <a href="https://archives.taize.fr/spip.php?page=chant&song=465&lang=es" target="_blank">magnificat (canon)</a>.</p>
+
+    </div>
+
     <!-- Script con la partitura de esta canción -->
     <script>
         const MI_PARTITURA = `
 X:1
 T:Magnificat
-T:"Mi alma glorifica al Señor"
-C:Lucas 1,46-55
-T:Nota: Por ahora, no sé cómo conseguir que se reproduzca como un canon
+T:Lucas 1,46-55
 M:C
 L:1/4
 K:G

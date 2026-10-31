@@ -16,14 +16,14 @@
 <body>
     <div class="container">
         <!-- Enlace para volver -->
-        <div style="margin-bottom: 20px;">
+        <div>
             <a href="../index.html#repertorio">← Volver al Índice</a>
         </div>
 
         <h1>Tengo sed de ti</h1>
 
         <!-- Checkboxes de voces -->
-        <div style="margin-bottom: 20px;">
+        <div>
             <span class="letrero-voces-transporte">Voces Activas:</span>
             <label style="margin-right: 15px; cursor: pointer;">
                 <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
@@ -42,17 +42,27 @@
 
         <!-- Contenedores de la partitura y reproductor -->
         <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
-        <div id="audio" style="margin-top: 15px;"></div>
+        <div id="audio" style="margin: 15px; text-align: center"></div>
     </div>
+    
+    <div class="container">
+        <h1>Notas</h1>
+            <p class="letrero-voces-transporte">Letra original:</p>
+            <p class="subparrafo"><i>Bless the Lord, my soul, and bless God's holy name. Bless the Lord, my soul, who leads me into life.</i></p>
+            <p class="letrero-voces-transporte">Traducción literal:</p>
+            <p class="subparrafo">Bendice alma mía al Señor, y bendice su santo nombre. Bendice alma mía al Señor, que me conduce a la vida (Salmo 103).</p>
+
+            
+    </div>
+   
+
+
 
     <!-- Script con la partitura de esta canción -->
     <script>
         const MI_PARTITURA = `
 X:1
 T:Tengo sed de ti
-T:Letra original: Bless the Lord, my soul, and bless God's holy name. 
-T:Bless the Lord, my soul, who leads me into life.
-T:La letra en español es la oficial.
 M:C
 L:1/4
 K:F
@@ -69,7 +79,7 @@ V:T name="T" clef=bass
 w: Ten-go sed de ti, oh fuen-te del a-mor. _ Ten-go sed de ti: tu~a-mor es li-ber-tad.
 V:B name="B" clef=bass
 [V:B] D,3/2 D,/ G,3/2 G,/ | D,2 z D, | B,, B,, C, C, | (F, G, A,2) | D,3/2 D,/ G,3/2 G,/ | D,2 z D, | B,, B,, C, E, | D,3 z :|]
-w: Ten-go sed de ti, oh fuen-te del a-mor _ _. Ten-go sed de ti: tu~a-mor es li-ber-tad.
+w: Ten-go sed de ti, oh fuen-te del a-mor. _ _ Ten-go sed de ti: tu~a-mor es li-ber-tad.
 `;
 </script>
 

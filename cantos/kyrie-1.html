@@ -15,14 +15,14 @@
     
     <div class="container">
         <!-- Enlace para volver -->
-        <div style="margin-bottom: 20px;">
+        <div>
             <a href="../index.html#repertorio">← Volver al Índice</a>
         </div>
 
         <h1>Kyrie 1</h1>
 
         <!-- Checkboxes de voces -->
-         <div style="margin-bottom: 20px;">
+         <div>
             <span style="font-weight: bold; margin-right: 15px;">Voces Activas:</span>
             <label style="margin-right: 15px; cursor: pointer;">
                 <input type="checkbox" id="chk-S" checked onchange="actualizarMotor()" style="accent-color: #ff5e00;"> Soprano
@@ -42,6 +42,17 @@
         <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
         <div id="audio" style="margin-top: 15px;"></div>
     </div>
+
+    <div class="container">
+        <h1>Notas</h1>
+        <p class="letrero-voces-transporte">Traducción</p>
+        <p class="subparrafo">Señor, ten piedad.</p>
+        <p class="letrero-voces-transporte">Modificación de la partitura</p>
+        <p class="subparrafo">La sílaba -son (de elei<b>son</b>) dura dos tiempos, en lugar de uno (según la partitura original) para que el tempo sea constantemente 2/4.</p>
+
+    </div>
+
+
     <script>
         // =====================================================================
         // ZONA DE DATOS (LA PLANTILLA)
@@ -51,15 +62,13 @@
         const MI_PARTITURA = `
 X:1
 T:Kyrie 1
-T:"Señor, ten piedad"
-T:Esta versión alarga la sílaba "-son" para hacer la partitura completamente en 2/4.
 M:2/4
 L:1/4
 K:G
 Q: 1/4=90        
 %%score [S A T B]
 V:S name="S" clef=treble
-[V:S] "G" B/c/ "(D)" d | "Em" G/A/ "(Bm)" B | "C" E/ G "D"  F/ | "G" G2 | B/c/ "(D)" d | "Em" G/A/ "(Bm)" B | "C" E/ G "C" F/ | "G" G2 |]
+[V:S] "G" B/c/ "D" d | "Em" G/A/ "Bm" B | "C" E/ G "D"  F/ | "G" G2 | B/c/ "D" d | "Em" G/A/ "Bm" B | "C" E/ G "C" F/ | "G" G2 |]
 w: Ky-ri-e Ky-ri-e e-le-i-son. Ky-ri-e Ky-ri-e e-le-i-son
 V:A name="C" clef=treble
 G/G/ F | E/E/ F | E/ E D/ | D2 | G/G/ F | E/E/ F | E/ E D/ | D2 |]
