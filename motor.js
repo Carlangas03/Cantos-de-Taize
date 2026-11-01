@@ -211,3 +211,32 @@ document.querySelectorAll("[data-include]").forEach(async (el) => {
             console.error("Error al incluir el archivo:", error);
         }
 });
+
+/*****************************************************************************/
+/* LÓGICA PARA <a href="../index.html#repertorio">Volver al índice</a>       */  
+/*****************************************************************************/
+document.querySelectorAll("[data-include]").forEach(async (el) => {
+    const archivo = el.getAttribute("data-include");
+    try {
+        const respuesta = await fetch(archivo);
+        if (respuesta.ok) {
+            const html = await respuesta.text();
+            el.outerHTML = html; 
+
+            // --- AÑADE ESTO AQUÍ ---
+            // Una vez que el HTML se ha inyectado, comprobamos si el usuario venía con un #ancla en la URL
+            if (window.location.hash) {
+                const elementoDestino = document.querySelector(window.location.hash);
+                if (elementoDestino) {
+                    elementoDestino.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            // ------------------------
+
+        } else {
+            el.innerHTML = `<p style="color:red;">No se pudo cargar ${archivo}</p>`;
+        }
+    } catch (error) {
+        console.error("Error al incluir el archivo:", error);
+    }
+});

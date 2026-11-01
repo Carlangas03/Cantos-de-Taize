@@ -298,14 +298,58 @@ footer a {
     color: var(--color-acento);          /* Color corporativo */
     text-decoration: none;   /* Elimina el subrayado por defecto */
     font-weight: bold;       /* Negrita para destacar */
+    }
+    footer a:hover {
+        text-decoration: underline; /* Subraya al pasar el ratón */
+    }
+
+footer p {
+    text-align: center
+    }
+
+/* Contenedor general que alinea toda la fila horizontalmente y la centra */
+.footer-social-row {
+    display: flex;
+    flex-wrap: wrap;             /* Permite que bajen de línea si la pantalla es muy pequeña */
+    justify-content: center;     /* CENTRA EL CONJUNTO TOTAL dentro del container/footer */
+    align-items: center;
+    gap: 40px;                   /* Distancia horizontal entre el bloque de GitHub y el de Gmail */
+    padding: 20px 0;
 }
 
-footer a:hover {
-    text-decoration: underline; /* Subraya al pasar el ratón */
+/* Cada elemento individual (Icono + Texto) */
+.footer-social-item {
+    display: flex;
+    flex-direction: column;      /* Pone el icono arriba y el texto abajo (en columna) */
+    align-items: center;         /* CENTRA EL ICONO Y EL TEXTO ENTRE SÍ horizontalmente */
+    text-decoration: none;
+    color: var(--color-texto);   /* Utiliza la variable de texto de tu proyecto */
+    transition: color 0.3s ease;
 }
+
+/* Efecto hover al pasar el ratón utilizando tu variable de acento */
+.footer-social-item:hover {
+    color: var(--color-acento);
+}
+
+/* Estilo para los iconos SVG */
+.footer-icon {
+    width: 28px;                 /* Ancho del icono */
+    height: 28px;                /* Alto del icono */
+    margin-bottom: 6px;          /* Separación exacta entre el icono y el texto */
+    fill: currentColor;          /* Hace que el icono herede automáticamente el color del texto (y cambie en el hover) */
+}
+
+/* Estilo para el texto debajo del icono */
+.footer-social-item span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
 
 /*****************************************************************************/
 /* Adaptación automática del menú para móviles */
+/*****************************************************************************/
 @media (max-width: 640px) {
     .container {
         padding: var(--padding-container-mobile); /* Reduce el espacio interior blanco para ganar anchura */
