@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bendigo al Señor</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div>
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>Bendigo al Señor</h1>
+
+        <!-- Checkboxes de voces -->
+        <div>
+            <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
+            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
+        </div>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="container">
+        <h1>Notas</h1>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Bendigo al Señor
+T:Salmo 28
+M:3/4
+L:1/4
+K:C
+Q: 1/4=70        
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] "G" D/2 [|: D D "Am" C/ "C" E/ | "G" D2 "Bb" F/G/ | "Am" A "Dm" A "G" (G/B/) | "Dm" A2 "Am" A/c/ | "G5" d2 "Bb"_B/A/ | "C" G G3/2 "Am" A/2 | "Dm" F/2 F D/2 "Bb" F/A/ "C" G2 | "G" D/2 :|]
+w: Ben-di-go al Se-ñor por-que~es-cu-cha mi _ voz, el Se-ñor es mi fuer-za, con-fí-a mi co-ra-zón. Ben-
+V:A name="C" clef=treble
+[V:A] B,/2 [|: B, B, A,/G,/ | B,2 D/D/ | E F E | F2 E/E/ | G2 F/F/ | E E3/2 E/2 | D/2 D D/2 D/D/ E2 | B,/2 :|]
+w: Ben-di-go al Se-ñor por-que~es-cu-cha mi voz, el Se-ñor es mi fuer-za, con-fí-a mi co-ra-zón. Ben-
+V:T name="T" clef=bass
+[V:T] G,/2 [|: G, G, E,/E,/ | G,2 F,/F,/ | E, A, (B,/G,/) | A,2 C/C/ | B,2 D/C/ | C C3/2 A,/2 | A,/2 A, F,/2 F,/F,/ C2 | G,/2 :|]
+w: Ben-di-go al Se-ñor por-que~es-cu-cha mi _ voz, el Se-ñor es mi fuer-za, con-fí-a mi co-ra-zón. Ben-
+V:B name="B" clef=bass
+[V:B] G,/2 [|: G, G, E,/C,/ | D,2 _B,,/B,,/ | C, D, G, | D,2 C,/A,,/ | G,,2 _B,,/B,,/ | C, C,3/2 C,/2 | D,/2 D, D,/2 _B,,/B,,/ C,2 | G,/2 :|]
+w: Ben-di-go al Se-ñor por-que~es-cu-cha mi voz, el Se-ñor es mi fuer-za, con-fí-a mi co-ra-zón. Ben-
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>

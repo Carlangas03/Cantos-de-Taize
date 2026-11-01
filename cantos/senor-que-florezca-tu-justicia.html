@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Señor, que florezca tu justicia</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div>
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>Señor, que florezca tu justicia</h1>
+
+        <!-- Checkboxes de voces -->
+        <div>
+            <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
+            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
+        </div>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="container">
+        <h1>Notas</h1>
+            <div><p class="letrero-voces-transporte">
+                <div class="subparrafo"></div>
+            </div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Señor, que florezca tu justicia
+T:Salmo 72
+M:C
+L:1/4
+K:G
+Q: 1/4=76
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] "B" B,/2 [|: "Em" E E/ "D" F/ "C" G/G/ "Bm" F/D/ | "Em" E E2 "D" F/ "Em" G/ | "D" A3/2 B/ "C" c c/B/ | "D" A A2 z/2 "B" B/2 | "Em" B "G" d/c/ B/G/ E/F/ | "C" G G2 "Em" E/E/ |  "Bm" D/D/ "Am" E/E/ "Bm" F "Am" A/G/ | "B" F3 z/2 B,/ :|]
+w: Se-ñor, que flo-rez-ca tu jus-ti-cia, y tu paz em-pa-pe la tie-rra. Oh Dios, que flo-rez-ca tu jus-ti-cia, y se lle-ne nues-tra vi-da de ti. Se
+V:A name="C" clef=treble
+[V:A] F,/2 [|: B, B,/D/ C/C/ D/D/ | B, B,2 D/B,/ | D3/2 D/ C E/E/ | F F2 z/2 F/2 | B G/E/ G/D/ C/C/ | C C2 B,/B,/ | D/D/ B,/B,/ B, C/E/ | B,3 z/2 G,/ :|]
+w: Se-ñor, que flo-rez-ca tu jus-ti-cia, y tu paz em-pa-pe la tie-rra. Oh Dios, que flo-rez-ca tu jus-ti-cia, y se lle-ne nues-tra vi-da de ti. Se
+V:T name="T" clef=bass
+[V:T] ^D,/2 [|: E, G,/A,/ C/C/ A,/G,/ | G, G,2 A,/G,/ | D3/2 G,/ G, G,/G,/ | D D2 z/2 ^D/2 | E D/G,/ G,/G,/ G,/G,/ | G, G,2 G,/G,/ | G,/G,/ G,/G,/ F, E,/E,/ | ^D,3 z/2 D,/ :|]
+w: Se-ñor, que flo-rez-ca tu jus-ti-cia, y tu paz em-pa-pe la tie-rra. Oh Dios, que flo-rez-ca tu jus-ti-cia, y se lle-ne nues-tra vi-da de ti. Se
+V:B name="B" clef=bass
+[V:B] B,,/2 [|: G,, G,/F,/ E,/E,/ D,/B,,/ | E, E,2 D,/E,/ | F,3/2 G,/ E, C,/C,/ | D, D,2 z/2 B,,/2 | E, B,,/C,/ D,/B,,/ C,/D,/ | E, E,2 E,/E,/ | B,,/B,,/ E,/E,/ D, C,/A,,/ | B,,3 z/2 B,/ :|]
+w: Se-ñor, que flo-rez-ca tu jus-ti-cia, y tu paz em-pa-pe la tie-rra. Oh Dios, que flo-rez-ca tu jus-ti-cia, y se lle-ne nues-tra vi-da de ti. Se
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>

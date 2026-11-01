@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El alma que anda en amor</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div>
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>El alma que anda en amor</h1>
+
+        <!-- Checkboxes de voces -->
+        <div>
+            <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
+            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
+        </div>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="container">
+        <h1>Notas</h1>
+            <div><p class="letrero-voces-transporte">Frases de solista</p>
+                <ol>
+                    <li>El amor es paciente, es afable, no tiene envidia.</li>
+                    <li>El amor no se alegra de la injusticia si no que goza en la verdad.</li>
+                    <li>El amor disculpa, cree sin límites, espera, aguanta sin límites.</li>
+                    <li>Amo porque el Señor escucha, Dios escucha mi voz.</li>
+                    <li>El Señor guarda a los sencillos. Estando yo sin fuerzas me salvó.</li>
+                    <li>Recobra tu calma alma mía, el Señor fue bueno conmigo.</li>
+                    <li>Yo caminaré en presencia del Señor, por la tierra de los vivos.</li>
+                </ol>
+
+                <p>La fuente de estas frases es la descripción de este <a href="https://youtu.be/1tzQ9GEKly0">vídeo</a>, por lo que no sé si es así oficialmente. La primera de todas seguro que es correcta, porque se canta en español en las versiones del canto; del resto, no sé si se trata de una traducción literal, o si se trata de una versión en español aparte. Por otro lado, no he encontrado la partitura para las melodías; pero pueden aprenderse de oído.</p>
+            </div>
+    </div>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:El alma que anda en amor
+C:San Juan de la cruz (1542-1591)
+M:C
+L:1/4
+K:A
+Q: 1/4=78
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] C [|: "F#m" F/2 F3/2 "C#m" G "E" A/B/ | "A" A3 A | "D" F/ F3/2 "E" G "C#m" E | "F#m" F2 F C | F/2 F3/2 "C#m" G "E" A/B/ | "A" A3 A | "D" F/ F3/2 "E" G "C#m" E | "F#m" F2 F2 || "Bm" (F2 "E" G2 | "A" A4 "D") | ("Bm" B2 "D6" F2 | "E" E3) C :|]
+w: El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. O __ O __ El
+V:A name="C" clef=treble
+[V:A] C [|: C/2 C3/2 E E/E/ | E3 E | D/ D3/2 B, C | C2 C C | C/2 C3/2 E E/E/ | E3 E | D/ D3/2 B, C | C2 C2 || (D2 (E2 | E2) D2) | (D C D2 | B,3) C :|]
+w: El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. O ___ O __ El
+V:T name="T" clef=bass
+[V:T] C, [|: A,/ A,3/2 C B,/B,/ | C3 A, | A,/ A,3/2 G, C | A,2 A, C, | A,/ A,3/2 C B,/B,/ | C3 A, | A,/ A,3/2 G, C | A,2 A,2 || (B,4 | A,2 F,2) | (F,2 B,2 | G,3) C, :|]
+w: El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. O __ O __ El
+V:B name="B" clef=bass
+[V:B] C, [|: F,/2 F,3/2 C, E,/E,/ | A,,3 C, | D,/ D,3/2 E, G, | F,2 F, C, | F,/2 F,3/2 C, E,/E,/ | A,,3 C, | D,/ D,3/2 E, G, | F,2 F,2  || (F,2 E, D, | C,2 D,2) | (B,,2 D,2 | E,3) C, :|]
+w: El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. O ____ O __ El
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>
