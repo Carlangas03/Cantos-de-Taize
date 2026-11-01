@@ -334,10 +334,13 @@ footer p {
 
 /* Estilo para los iconos SVG */
 .footer-icon {
-    width: 28px;                 /* Ancho del icono */
-    height: 28px;                /* Alto del icono */
-    margin-bottom: 6px;          /* Separación exacta entre el icono y el texto */
-    fill: currentColor;          /* Hace que el icono herede automáticamente el color del texto (y cambie en el hover) */
+    width: 28px !important;          /* Forzamos el ancho exacto */
+    height: 28px !important;         /* Forzamos el alto exacto */
+    min-width: 28px;                 /* Impide que un contenedor los comprima */
+    min-height: 28px;                /* Impide que un contenedor los estire */
+    flex-shrink: 0;                  /* Evita que el navegador los distorsione en pantallas estrechas */
+    margin-bottom: 6px;              
+    fill: currentColor;
 }
 
 /* Estilo para el texto debajo del icono */
