@@ -240,3 +240,30 @@ document.querySelectorAll("[data-include]").forEach(async (el) => {
         console.error("Error al incluir el archivo:", error);
     }
 });
+
+/*****************************************************************************/
+/* LÓGICA PARA CAMBIAR ENTRE VISTAS DEL REPERTORIO DE FORMA DINÁMICA         */
+/*****************************************************************************/
+window.cambiarVista = function(tipo) {
+    // 1. Ocultamos TODAS las vistas que tengan la clase .vista-repertorio
+    document.querySelectorAll('.vista-repertorio').forEach(vista => {
+        vista.classList.add('vista-oculta');
+    });
+
+    // 2. Quitamos la clase 'active' de TODOS los botones de pestañas
+    document.querySelectorAll('.repertorio-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    // 3. Mostramos únicamente la vista cuyo ID coincida con el tipo seleccionado
+    const vistaSeleccionada = document.getElementById(`contenedor-${tipo}`);
+    if (vistaSeleccionada) {
+        vistaSeleccionada.classList.remove('vista-oculta');
+    }
+
+    // 4. Activamos el botón correspondiente
+    const botonSeleccionado = document.getElementById(`btn-${tipo}`);
+    if (botonSeleccionado) {
+        botonSeleccionado.classList.add('active');
+    }
+};

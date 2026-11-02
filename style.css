@@ -7,7 +7,8 @@ html {
 }
 
 /*****************************************************************************/
-/* Variables de estilo */
+/* Variables de estilo                                                       */
+/*****************************************************************************/
 :root {
 
     /* Colores */
@@ -31,6 +32,7 @@ html {
     --gap-botones: 10px;
     --gap-menu: 20px; /* Espacio entre los enlaces del menú de navegación */
     --gap-menu-mobile: 10px; /* Espacio entre los enlaces del menú de navegación en móviles */
+    --gap-indice-letras: 5px; /* Espacio entre las letras del índice de repertorio */
 
     --ancho-mobile: 600px; /* Ancho máximo para dispositivos móviles */
     --margin-vertical-general: 30px;
@@ -53,6 +55,9 @@ html {
     --size-nav: 18px;
     --size-general: 16px;
     --size-repertorio: 18px; /* Tamaño de fuente para el repertorio */
+    --size-indice-letras: 14px; /* Tamaño de fuente para las letras del índice de repertorio */
+    --size-indice-palabra: 14px; /* Tamaño de fuente para las palabras del índice de repertorio */
+    --size-letra-aislada: 18px; /* Tamaño de fuente para las letras aisladas del repertorio */
 
     /* Página para canto */
     --size-return-index: var(--size-nav); /* Tamaño de fuente para el enlace de retorno a la página principal */
@@ -73,8 +78,9 @@ html {
 img {
     box-shadow: var(--sombra);
 }
-
-/* ESTILOS GENERALES (index y cantos): body, background y container*/
+/*****************************************************************************/
+/* ESTILOS GENERALES (index y cantos): body, background y container          */
+/*****************************************************************************/
 body { 
     position: relative;
     font-family: Arial, sans-serif; 
@@ -114,6 +120,92 @@ body::before {
 .repertorio {
     font-size: var(--size-repertorio); /* Tamaño de fuente para el repertorio */
 }
+/* Contenedor opcional para centrar y ordenar la barra de letras */
+.indice-letras-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;     /* Centra el conjunto de letras en el ordenador */
+    gap: var(--gap-indice-letras);                   /* Espacio entre las letras */
+}
+
+/* Estilo para cada letra individual (idéntico concepto al menú de navegación) */
+.indice-letra {
+    text-decoration: none;
+    color: var(--color-texto);   /* Color de texto normal */
+    font-weight: bold;
+    font-size: var(--size-indice-letras); /* Tamaño de fuente para las letras del índice de repertorio */
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+.indice-palabra {
+    text-decoration: none;
+    color: var(--color-texto);   /* Color de texto normal */
+    font-weight: bold;
+    font-size: var(--size-indice-palabra); /* Tamaño de fuente para las letras del índice de repertorio */
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* Comportamiento al pasar el ratón (Hover) */
+.indice-letra:hover {
+    background: var(--color-background-link-hover); /* Fondo suave al pasar el ratón */
+    color: var(--color-acento);                     /* Cambia al color acento corporativo */
+    text-decoration: underline;                     /* Se subraya */
+}
+
+.letra-aislada {
+    /*text-align: center;*/
+    text-decoration: none;
+    color: var(--color-texto);   /* Color de texto normal */
+    font-weight: bold;
+    font-size: var(--size-letra-aislada);
+    display: block; /* Hace que ocupe toda la línea */
+    margin-top: 50px;
+}
+
+/* Contenedor de las pestañas del selector */
+.repertorio-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 25px 0 15px 0;
+}
+
+/* Estilo para los botones de selección (hereda la filosofía de .indice-letra) */
+.repertorio-tab {
+    text-decoration: none;
+    color: var(--color-texto);
+    font-weight: bold;
+    font-size: var(--size-general);
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* Efecto hover y estado activo (cuando la pestaña está seleccionada) */
+.repertorio-tab:hover, 
+.repertorio-tab.active {
+    background: var(--color-background-link-hover);
+    color: var(--color-acento);
+    text-decoration: underline;
+}
+
+/* Línea horizontal discreta */
+.repertorio-divisor {
+    border: none;
+    border-top: 1px solid var(--color-background-link-hover);
+    margin: 0 0 20px 0;
+}
+
+/* Clase de utilidad para ocultar la vista que no esté seleccionada */
+.vista-oculta {
+    display: none !important;
+}
+
 
 .subparrafo {
     margin-left: var(--sangria-subparrafo-general); /* Crea la sangría */
@@ -293,7 +385,8 @@ html {
     }
 
 /*****************************************************************************/
-/* Estilos para el FOOTER */
+/* Estilos para el FOOTER                                                    */
+/*****************************************************************************/
 footer a {
     color: var(--color-acento);          /* Color corporativo */
     text-decoration: none;   /* Elimina el subrayado por defecto */

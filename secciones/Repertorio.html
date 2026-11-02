@@ -1,20 +1,65 @@
 <div id="repertorio" class="container">
-        <h1>Repertorio de cantos de Taizé</h1>
-        <p>Selecciona una canción para ver la partitura y escuchar las voces:</p>
+    <h1>Repertorio de cantos de Taizé</h1>
+    <p>Selecciona una canción para ver la partitura y escuchar las voces:</p>
+
+    <div class="repertorio-selector">
+        <a href="javascript:void(0);" onclick="cambiarVista('alfabetico')" id="btn-alfabetico" class="repertorio-tab active">Alfabético</a>
+        <a href="javascript:void(0);" onclick="cambiarVista('liturgico')" id="btn-liturgico" class="repertorio-tab">Litúrgico</a>
+        <a href="javascript:void(0);" onclick="cambiarVista('citas')" id="btn-citas" class="repertorio-tab">Citas</a>
+        <a href="javascript:void(0);" onclick="cambiarVista('oracion')" id="btn-oracion" class="repertorio-tab">Tipo de oración</a>
+    </div>
+
+    <!-- Línea horizontal discreta -->
+    <hr class="repertorio-divisor">
+    
+    <!-- ========================================== -->
+    <!-- VISTA 1: ÍNDICE ALFABÉTICO                 -->
+    <!-- ========================================== -->
+    <div id="contenedor-alfabetico" class="vista-repertorio">
+        <!-- BARRA DE NAVEGACIÓN RÁPIDA A-Z -->
+        <div class="indice-letras-container">
+            <a href="#letra-a" class="indice-letra">A</a> 
+            <a href="#letra-b" class="indice-letra">B</a> 
+            <a href="#letra-c" class="indice-letra">C</a> 
+            <a href="#letra-d" class="indice-letra">D</a> 
+            <a href="#letra-e" class="indice-letra">E</a> 
+            <a href="#letra-f" class="indice-letra">F</a>
+            <a href="#letra-g" class="indice-letra">G</a>
+            <a href="#letra-h" class="indice-letra">H</a>
+            <a href="#letra-i" class="indice-letra">I</a> 
+            <a href="#letra-j" class="indice-letra">J</a> 
+            <a href="#letra-k" class="indice-letra">K</a> 
+            <a href="#letra-l" class="indice-letra">L</a> 
+            <a href="#letra-m" class="indice-letra">M</a> 
+            <a href="#letra-n" class="indice-letra">N</a> 
+            <a href="#letra-o" class="indice-letra">O</a> 
+            <a href="#letra-p" class="indice-letra">P</a>
+            <a href="#letra-q" class="indice-letra">Q</a>
+            <a href="#letra-r" class="indice-letra">R</a> 
+            <a href="#letra-s" class="indice-letra">S</a> 
+            <a href="#letra-t" class="indice-letra">T</a> 
+            <a href="#letra-u" class="indice-letra">U</a> 
+            <a href="#letra-v" class="indice-letra">V</a>
+            <a href="#letra-w" class="indice-letra">W</a>
+            <a href="#letra-x" class="indice-letra">X</a>
+            <a href="#letra-y" class="indice-letra">Y</a>
+            <a href="#letra-z" class="indice-letra">Z</a>
+        </div>
+
         <ul>
-            <span class="letrero-voces-transporte">A</span>
+            <span id="letra-a" class="letra-aislada">A</span>
                 <li><a class="repertorio" href="cantos/adoramus-te-christe.html">Adoramus te, Christe <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/adoramus-te-o-christe.html">Adoramus te, o Christe  <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/alleluia-7.html">Alleluia 7</a></li>
                 <li><a class="repertorio" href="cantos/alleluia-11.html">Alleluia 11</a></li>
                 <li><a class="repertorio" href="cantos/alleluia-20.html">Alleluia 20</a></li>
             
-            <span class="letrero-voces-transporte">B</span>
+            <span id="letra-b" class="letra-aislada">B</span>
                 <li><a class="repertorio" href="cantos/bendigo-al-senor.html">Bendigo al Señor</a></li>
                 <li><a class="repertorio" href="cantos/benedictus.html">Benedictus <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/bonum-est-confidere.html">Bonum est confidere <i>FALTA</i></a></li>
 
-            <span class="letrero-voces-transporte">C</span>
+            <span id="letra-c" class="letra-aislada">C</span>
                 <li><a class="repertorio" href="cantos/cantate-domino-canticum-novum.html">Cantate Domino canticum novum (canon) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/christe-lux-mundi.html">Christe, lux mundi</a></li>
                 <li><a class="repertorio" href="cantos/christe-salvator.html">Christe Salvator <i>FALTA</i></a></li>
@@ -23,67 +68,175 @@
                 <li><a class="repertorio" href="cantos/cristo-jesus.html">Cristo jesús (<i>Jésus le Christ</i>) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/crucem-tuam.html">Crucem tuam <i>FALTA</i></a></li>
             
-            <span class="letrero-voces-transporte">D</span>
+            <span id="letra-d" class="letra-aislada">D</span>
                 <li><a class="repertorio" href="cantos/da-pacem-cordium.html">Da pacem cordium (canon) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/da-pacem-in-diebus.html">Da pacem ... in diebus (canon) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/de-noche.html">De noche</a></li>
                 <li><a class="repertorio" href="cantos/dios-es-amor.html">Dios es amor (<i>Bóg jest miloscia</i>) <i>FALTA</i></a></li>
 
-            <span class="letrero-voces-transporte">E</span>
+            <span id="letra-e" class="letra-aislada">E</span>
                 <li><a class="repertorio" href="cantos/el-alma-que-anda-en-amor.html">El alma que anda en amor</a></li>
                 <li><a class="repertorio" href="cantos/el-senor-es-mi-fortaleza.html">El Señor es mi fortaleza (<i>El Senyor</i>) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/en-nuestra-oscuridad.html">En nuestra oscuridad (<i>Dans nos obscurités</i>) <i>FALTA</i></a></li>
             
-            <span class="letrero-voces-transporte">I</span>
+            <span id="letra-i" class="letra-aislada">I</span>
                 <li><a class="repertorio" href="cantos/in-manus-tuas-pater.html">In manus tuas, Pater  <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/in-resurrectione-tua.html">In resurrectione tua <i>FALTA</i></a></li>
 
-            <span class="letrero-voces-transporte">J</span>
+            <span id="letra-j" class="letra-aislada">J</span>
                 <li><a class="repertorio" href="cantos/jesu-redemptor.html">Jesu Redemptor <i>FALTA</i></a></li>
 
-            <span class="letrero-voces-transporte">K</span>
+            <span id="letra-k" class="letra-aislada">K</span>
                 <li><a class="repertorio" href="cantos/kyrie-1.html">Kyrie 1</a></li>
 
-            <span class="letrero-voces-transporte">L</span>
+            <span id="letra-l" class="letra-aislada">L</span>
                 <li><a class="repertorio" href="cantos/la-tiniebla.html">La tiniebla (<i>La tenébre</i>) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/laudate-dominum.html">Laudate Dominum</a></li>
                 <li><a class="repertorio" href="cantos/laudate-omnes-gentes.html">Laudate omnes gentes</a></li>
                 <li><a class="repertorio" href="cantos/laudemus-deum.html">Laudemus Deum <i>FALTA</i></a></li>
             
-            <span class="letrero-voces-transporte">M</span>
+            <span id="letra-m" class="letra-aislada">M</span>
                 <li><a class="repertorio" href="cantos/magnificat-canon.html">Magnificat (canon)</a></li>
                 <li><a class="repertorio" href="cantos/misericordias-domini.html">Misericordias Domini</a></li>
             
-            <span class="letrero-voces-transporte">N</span>
+            <span id="letra-n" class="letra-aislada">N</span>
                 <li><a class="repertorio" href="cantos/nada-te-turbe.html">Nada te turbe</a></li>
                 <li><a class="repertorio" href="cantos/nunc-dimittis.html">Nunc dimittis <i>FALTA</i></a></li>
 
-            <span class="letrero-voces-transporte">O</span>
+            <span id="letra-o" class="letra-aislada">O</span>
                 <li><a class="repertorio" href="cantos/ostende-nobis.html">Ostende nobis <i>FALTA</i></a></li>
 
-            <span class="letrero-voces-transporte">P</span>
+            <span id="letra-p" class="letra-aislada">P</span>
                 <li><a class="repertorio" href="cantos/padrenuestro.html">Padrenuestro</a></li>
             
-            <span class="letrero-voces-transporte">S</span>
+            <span id="letra-s" class="letra-aislada">S</span>
                 <li><a class="repertorio" href="cantos/sanctum-nomen-domini.html">Sanctum Nomen Domini <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/senor-que-florezca-tu-justicia.html">Señor, que florezca tu justicia</a></li>
                 <li><a class="repertorio" href="cantos/spiritus-jesu-christi.html">Spiritus Jesu Christi <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/surrexit.html">Surrexit (canon) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/surrexit-Christus.html">Surrexit Christus <i>FALTA</i></a></li>
 
-            <span class="letrero-voces-transporte">T</span>
+            <span id="letra-t" class="letra-aislada">T</span>
                 <li><a class="repertorio" href="cantos/tu-eres-fuente-viva.html">Tu eres fuente viva (<i>Tue sei sorgente viva</i>) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/tu-palabra-senor.html">Tu palabra, Señor</a></li>
                 <li><a class="repertorio" href="cantos/tengo-sed-de-ti.html">Tengo sed de ti (<i>Bless the Lord</i>)</a></li>
             
-            <span class="letrero-voces-transporte">U</span>
+            <span id="letra-u" class="letra-aislada">U</span>
                 <li><a class="repertorio" href="cantos/ubi-caritas.html">Ubi Caritas</a></li>
 
-            <span class="letrero-voces-transporte">V</span>
+            <span id="letra-v" class="letra-aislada">V</span>
                 <li><a class="repertorio" href="cantos/velare.html">Velaré (<i>Bleibet hier</i>) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/ven-espiritu-de-Dios.html">Ven, Espíritu de Dios (<i>Tui amoris ignem</i>) <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/veni-sancte-spiritus.html">Veni, Sancte Spiritus <i>FALTA</i></a></li>
                 <li><a class="repertorio" href="cantos/venite-exultemus-domino.html">Venite, exultemus Domino <i>FALTA</i></a></li>
         </ul>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VISTA 2: ÍNDICE LITÚRGICO                  -->
+    <!-- ========================================== -->
+    <div id="contenedor-liturgico" class="vista-repertorio vista-oculta">
+        <div class="indice-letras-container">
+            <a href="#adviento" class="indice-palabra">Adviento</a>
+            <a href="#navidad" class="indice-palabra">Navidad</a>
+            <a href="#cuaresma" class="indice-palabra">Cuaresma</a>
+            <a href="#pascua" class="indice-palabra">Pascua</a> 
+            <a href="#pentecostes" class="indice-palabra">Pentecostés</a>
+        </div>
+
+        <ul>
+            <span id="adviento" class="letra-aislada">Adviento</span>
+
+            <span id="navidad" class="letra-aislada">Navidad</span>
+
+            <span id="cuaresma" class="letra-aislada">Cuaresma</span>
+
+            <span id="pascua" class="letra-aislada">Pascua</span>
+
+            <span id="pentecostes" class="letra-aislada">Pentecostés</span>
+        </ul>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VISTA 3: ÍNDICE DE CITAS                  -->
+    <!-- ========================================== -->
+    <div id="contenedor-citas" class="vista-repertorio vista-oculta">
+        <div class="indice-letras-container">
+            <a href="#salmos" class="indice-palabra">Salmos</a>
+            <a href="#evangelios" class="indice-palabra">Evangelios</a>
+            <a href="#cita-general" class="indice-palabra">Otras citas bíblicas</a>
+            <a href="#santos" class="indice-palabra">De los santos</a>
+        </div>
+
+        <ul>
+            <span id="salmos" class="letra-aislada">Salmos</span>
+                <!-- <li><a class="repertorio" href="cantos/christe-lux-mundi.html">Christe, lux mundi</a></li> -->
+
+            <span id="evangelios" class="letra-aislada">Evangelios</span>
+
+            <span id="cita-general" class="letra-aislada">Otras citas bíblicas</span>
+
+            <span id="santos" class="letra-aislada">De los santos</span>
+        </ul>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VISTA 4: TIPO DE ORACIÓN                   -->
+    <!-- ========================================== -->
+    <div id="contenedor-oracion" class="vista-repertorio vista-oculta">
+        <div class="indice-letras-container">
+            <a href="#invocacion" class="indice-palabra">Invocación al Espíritu Santo</a>
+            <a href="#adoracion" class="indice-palabra">Adoración y alabanza</a>
+            <a href="#suplica" class="indice-palabra">Súplica y petición</a>
+            <a href="#maria" class="indice-palabra">Virgen María</a>
+            <a href="#aleluya-kyrie" class="indice-palabra">Aleluyas y Kyries</a>
+        </div>
+
+        <ul>
+            <span id="invocacion" class="letra-aislada">Invocación al Espíritu Santo</span>
+                <li><a class="repertorio" href="cantos/spiritus-iesu-christi.html">Spiritus Iesu Christi</a></li>
+                <li><a class="repertorio" href="cantos/tu-eres-fuente-viva.html">Tú eres fuente viva</a></li>
+                <li><a class="repertorio" href="cantos/ven-espiritu-de-dios.html">Ven Espíritu de Dios</a></li>
+                <li><a class="repertorio" href="cantos/veni-sancte-spiritus.html">Veni Sancte Spiritus</a></li>
+
+
+            <span id="adoracion" class="letra-aislada">Adoración y alabanza</span>
+                <li><a class="repertorio" href="cantos/adoramus-te-christe.html">Adoramus te, Christe</a></li>
+                <li><a class="repertorio" href="cantos/adoramus-te-o-christe.html">Adoramus te, o Christe</a></li>
+                <li><a class="repertorio" href="cantos/bendigo-al-senor.html">Bendigo al Señor</a></li>
+                <li><a class="repertorio" href="cantos/benedictus.html">Benedictus</a></li>
+                <li><a class="repertorio" href="cantos/cantate-domino.html">Cantate Domino canticum novum</a></li>
+                <li><a class="repertorio" href="cantos/confitemini-domino.html">Confitemini Domino</a></li>
+                <li><a class="repertorio" href="cantos/crucem-tuam.html">Crucem tuam</a></li>
+                <li><a class="repertorio" href="cantos/jesu-redemptor.html">Jesu redemptor</a></li>
+                <li><a class="repertorio" href="cantos/laudemos-deum.html">Laudemos Deum</a></li>
+                <li><a class="repertorio" href="cantos/laudate-dominum.html">Laudate Dominum</a></li>
+                <li><a class="repertorio" href="cantos/laudate-omnes-gentes.html">Laudate omnes gentes</a></li>
+                <li><a class="repertorio" href="cantos/sanctum-nomen-domini.html">Sanctum nomen Domini</a></li>
+
+            <span id="suplica" class="letra-aislada">Súplica y petición</span>
+                <li><a class="repertorio" href="cantos/christe-salvator.html">Christe Salvator</a></li>
+                <li><a class="repertorio" href="cantos/cristo-jesus.html">Cristo Jesús</a></li>
+                <li><a class="repertorio" href="cantos/da-pacem-cordium.html">Da pacem cordium</a></li>
+                <li><a class="repertorio" href="cantos/da-pacem-in-diebus.html">Da pacem ... in diebus</a></li>
+                <li><a class="repertorio" href="cantos/en-nuestra-oscuridad.html">En nuestra oscuridad</a></li>
+                <li><a class="repertorio" href="cantos/ostende-nobis.html">Ostende nobis</a></li>
+                <li><a class="repertorio" href="cantos/senor-que-florezca-tu-justicia.html">Señor, que florezca tu justicia</a></li>
+
+
+
+            <span id="maria" class="letra-aislada">Virgen María</span>
+                <li><a class="repertorio" href="cantos/magnificat-canon.html">Magnificat</a></li>
+
+            <span id="aleluya-kyrie" class="letra-aislada">Aleluyas y Kyries</span>
+                <li><a class="repertorio" href="cantos/alleluia-7.html">Alleluia 7</a></li>
+                <li><a class="repertorio" href="cantos/alleluia-11.html">Alleluia 11</a></li>
+                <li><a class="repertorio" href="cantos/alleluia-20.html">Alleluia 20</a></li>
+                <li><a class="repertorio" href="cantos/kyrie-1.html">Kyrie 1</a></li>
+        </ul>
+    </div>
+
+
         <p style="text-align:right">Ir a <a href="#inicio" class="nav-link">Inicio</a></p>
     </div>
