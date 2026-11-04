@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoramus te, Christe</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div>
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>Adoramus te, Christe</h1>
+
+        <!-- Checkboxes de voces -->
+        <div>
+            <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
+            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
+        </div>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="container">
+        <h1>Notas</h1>
+            <div><p class="letrero-voces-transporte">Traducción</p>
+                <div class="subparrafo">Te adoramos, Cristo, y te bendecimos, porque por tu santa cruz redimiste al mundo.</div>
+            </div>
+    </div>
+
+    <footer>
+        <div class="footer-social-row">
+            <!-- Elemento 1: GitHub -->
+            <a href="https://github.com/Carlangas03/Cantos-de-Taize" target="_blank" class="footer-social-item">
+                <!-- Icono SVG de GitHub -->
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span>Repositorio</span>
+            </a>
+
+            <!-- Elemento 2: Gmail (Ejemplo de cómo replicarlo) -->
+            <a href="mailto:ccastillosanchez2003@gmail.com" class="footer-social-item">
+                <!-- Icono SVG de Gmail/Correo -->
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm0 2l-7 4.5L5 6h14zM5 18V8l7 4.5L19 8v10H5z"/>
+                </svg>
+                <span>Correo</span>
+            </a>
+
+        </div>
+    </footer>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Adoramus te, Christe
+T:Tradicionalmente rezado en la oración del Via Crucis
+M:3/4
+L:1/4
+K:A
+Q: 1/4=60
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] "F#m" C/C/ C/C/ C | "Bm/D" F "C#" ^E2 | ^E/E/ E/E/ E | "F#m" F "E" G2 | "A" A/2 A "E" G/2 "F#m" F/"C#"^E/ | "D" F "C#"^E2 | [M:2/4] "A" C/C/ "B" ^D/F/ | [M:3/4] "C#" ^E "F#m" F2 | "A" c/2 c "E" B/2 "F#m" A/"C#"G/ | "D" F "C#" ^E2 | [M:2/4] "A" C/C/ "B" ^D/F/ | [M:3/4] "C#" ^E "F#m" F2 :|]
+w: A-do-ra-mus te, Chris-te, be-ne-di-ci-mus ti-bi, qui-a per cru-cem tu-am re-de-mis-ti mun-dum, qui-a per cru-cem tu-am re-de-mis-ti mun-dum.
+V:A name="C" clef=treble
+[V:A] A,/A,/ A,/A,/ A, | B, C2 | C/C/ C/C/ C | C E2 | E/2 E E/2 C/C/ | (C/B,/) C2 | [M:2/4] C/C/ B,/D/ | [M:3/4] C C2 | A/2 A G/2 F/^E/ | (F/B,/) C2 | [M:2/4] C/C/ B,/D/ | [M:3/4] C C2 :|]
+w: A-do-ra-mus te, Chris-te, be-ne-di-ci-mus ti-bi, qui-a per cru-cem tu- _ am re-de-mis-ti mun-dum, qui-a per cru-cem tu- _ am re-de-mis-ti mun-dum.
+V:T name="T" clef=bass
+[V:T] F,/F,/ F,/F,/ F, | F, G,2 | G,/G,/ G,/G,/ G, | A, B,2 | C/2 C B,/2 A,/G,/ | F, G,2 | [M:2/4] A,/A,/ F,/B,/ | [M:3/4] G, A,2 | E/2 E E/2 C/C/ | (A,/F,/) G,2 | [M:2/4] A,/A,/ F,/B,/ | [M:3/4] G, A,2 :|]
+w: A-do-ra-mus te, Chris-te, be-ne-di-ci-mus ti-bi, qui-a per cru-cem tu-am re-de-mis-ti mun-dum, qui-a per cru-cem tu- _ am re-de-mis-ti mun-dum.
+V:B name="B" clef=bass
+[V:B] F,,/F,,/ F,,/F,,/ F,, | D, C,2 | C,/C,/ C,/C,/ C, | F, E,2 | A,/2 A, E,/2 F,/C,/ | D, C,2 | [M:2/4] A,,/A,,/ B,,/B,,/ | [M:3/4] C, F,2 | A,/2 A, E,/2 F,/C,/ | D, C,2 | [M:2/4] A,,/A,,/ B,,/B,,/ | [M:3/4] C, F,2 :|]
+w: A-do-ra-mus te, Chris-te, be-ne-di-ci-mus ti-bi, qui-a per cru-cem tu-am re-de-mis-ti mun-dum, qui-a per cru-cem tu-am re-de-mis-ti mun-dum.
+`;
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>
