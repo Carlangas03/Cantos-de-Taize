@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantaré al Señor</title>
+    <title>Crucem tuam</title>
     <!-- Librerías de ABCJS -->
     <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
@@ -20,16 +20,16 @@
             <a href="../index.html#repertorio">← Volver al Índice</a>
         </div>
 
-        <h1>Cantaré al Señor</h1>
+        <h1>Crucem tuam</h1>
 
         <!-- Checkboxes de voces -->
         <div>
             <span class="letrero-voces-transporte">Voces Activas</span>
         <div class="voces-container">
-            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
-            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
-            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
-            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Voz aguda</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Voz grave</label>
+            <label id="chk-T"></label>
+            <label id="chk-B"></label>
         </div>
             
         </div>
@@ -41,8 +41,10 @@
 
     <div class="container">
         <h1>Notas</h1>
-            <div><p class="letrero-voces-transporte">Letra original y traducción literal</p>
-                <div class="subparrafo"><i>Cantarei ao Senhor, enquanto viver; louvarei o meu Deus enquanto existir. Nel'encontro a minha alegria. Nel'encontro a minha alegria</i> (Cantaré al Señor mientras viva; alabaré a mi Dios mientras exista. En Él encuentro mi alegría).</div>
+            <div><p class="letrero-voces-transporte">Traducción</p>
+                <div class="subparrafo">Adoramus tu cruz, Señor, alabamos tu resurrección. Alabamos y glorificamos tu resurrección.</div>
+                <p>Para cantarla en español, el libro de los cantos de Taizé propone la siguiente letra:</p>
+                <p class="subparrafo"><b>Tu san-ta cruz</b> a-do-ra-mos, oh Se-ñor; te_a-la-ba-mos, Je-su-cris-to, por tu re-su-rrec-ción. Can-ta-mos tu_a-la-ban-za_y glo-ria. Te_a-la-ba-mos, Je-su-cris-to, por tu re-su-rrec-ción.</p>
             </div>
     </div>
 
@@ -73,14 +75,15 @@
     <script>
         const MI_PARTITURA = `
 X:1
-T:Adoramus te O Christe
+T:Cristo Jesús
 M:C
 L:1/4
-K:G
-Q: 1/2=56
+K:D
+Q: 1/4=72
 %%score [S A T B]
 V:S name="S" clef=treble
-[V:S] B2 A2 | G4 | c/c/c/c/ A G/A/ | B4 :|]
+[V:S] B/ B F/ [|: G z/2 E/ A A/E/ | F F D D/D/ | E D/E/ F/F/ B/B/ | ^A2 B/ B F/ | G z/2 B/ c c/A/ | F F D D | E D/E/ F B/^A/ | B2 B/ B F/ :|]
+w: Cris-to Je-sús, mi luz in-te-rior, que las ti-nie-blas en mí no ten-gan voz. Cris-to Je-sús, di-si-pa mis som-ras y que~en mí so-lo ha-ble tu~a-mor. Cri-to Je-
 w: O _ _ A-do-ra-mus te, O Chris-te.
 V:A name="C" clef=treble
 [V:A] G2 F2 | E4 | E/E/E/E/ F E/F/ |D4 :|]
