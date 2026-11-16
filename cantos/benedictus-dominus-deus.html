@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benedictus Dominus Deus</title>
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div>
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+        <h1>Benedictus Dominus Deus</h1>
+
+        <!-- Checkboxes de voces -->
+        <div>
+            <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Voz principal (aguda)</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Voz auxiliar (grave)<label id="chk-B"></label>
+        </div>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="container">
+        <h1>Notas</h1>
+            <div><p class="letrero-voces-transporte">Traducción</p></div>
+                <div class="subparrafo">Bendito sea el Señor Dios, porque ha visitado y redimido a su pueblo (Lucas 1,68).</div>
+                <div><p class="letrero-voces-transporte">Melodía y frases del solista (oración del <i>Benedictus</i>)</p></div>
+                <div id="paper-solista" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box; margin: 15px 0; max-width: 80%;"></div>
+                <div id="audio-solista" style="margin-top: 10px; margin-bottom: 20px;"></div>
+                <p class="subparrafo">En la versión original se cantan en francés y en inglés, pero como son versículos salmodiados que no siguen una partitura rígida, el idioma no cambia nada. Por otro lado, la traducción es la que aparece en la Liturgia de las Horas, y la melodía no es oficial, sino una mera aproximación.</p>
+                
+    </div>
+
+    <footer>
+        <div class="footer-social-row">
+            <!-- Elemento 1: GitHub -->
+            <a href="https://github.com/Carlangas03/Cantos-de-Taize" target="_blank" class="footer-social-item">
+                <!-- Icono SVG de GitHub -->
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span>Repositorio</span>
+            </a>
+
+            <!-- Elemento 2: Gmail (Ejemplo de cómo replicarlo) -->
+            <a href="mailto:ccastillosanchez2003@gmail.com" class="footer-social-item">
+                <!-- Icono SVG de Gmail/Correo -->
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm0 2l-7 4.5L5 6h14zM5 18V8l7 4.5L19 8v10H5z"/>
+                </svg>
+                <span>Correo</span>
+            </a>
+
+        </div>
+    </footer>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:Benedictus Dominus Deus
+T:Lucas 1,63
+M:C
+L:1/4
+K:G
+Q: 1/4=100
+%%score [S A T B]
+V:S name="Voz principal" clef=treble
+[V:S] A/B/ | "C" c G E/F/ G | "D" D D z [|: G/G/ | "G" G D G/A/ B | "D" A A z d/d/ | "Am" d c c/B/ A | "Em" B B z2 | "D" D/D/ E/E/ F/F/ D/D/ | "C" G E c/B/ G | "D" A A3 || A4 | A4 :|]
+w: Be-ne-dic-tus Do-mi-nus De-us. Be-ne-dic-tus Do-mi-nus De-us, be-ne-dic-tus Do-mi-nus De-us, qui-a vi-si-ta-vit et re-de-mit po-pu-lum su-um. O O
+V:A name="Voz auxiliar" clef=treble
+[V:A] z | Z | z3 [|: z | z2 z G/G/ | A D A/A/ G | A A z E/F/ | G G G/E/ F/G/ | A A z A/B/ | c G E/F/ G | D D3 || D4 | D4  :|]
+w: Be-ne-dic-tus Do-mi-nus De-us, be-ne-dic-tus qui-a vi-si-ta-vit et re-de-mit po-pu-lum su-um. O O
+`;
+
+// 2. La partitura exclusiva para la melodía del solista
+    const PARTITURA_SOLISTA = `
+X:2
+T:Melodía del Solista
+M:C
+L:1/4
+K:G
+Q=60
+V:Solo clef=treble
+[V:Solo] "D" A8 B4 A4 x | "D" G8 F2 G2 A4 x | "D" A8 B4 A4 x | "D" G8 F2 G2 A8 |
+w: Bendito~sea~el~Señor Dios~de~Isra-el, porque~ha~visitado~y~redimi-do~a su pueblo. Suscitándonos~una~fuerza de~salva-ción en~la~casa~de~Da-vid su siervo.
+w: Según~lo~había~predicho desde~an-tiguo, por~boca~de~sus~san-tos pro-fetas. Es~la~salvación~que~nos~libra~de nuestros ene-migos y~de~la~mano~de~todos~los que nos odian.
+w: Realizando la~miseri- cordia que~tuvo~con nues-tros padres. Recordando~su santa~ali- anza y~el~juramento~que~juró~a~nuestro~pa- dre~A- bra-ham.
+w: Para~concedernos~que, libres~de~te-mor, arrancados~de~la~mano~de~los e-ne-migos, le~sirvamos~con~santi- dad~y~jus-ticia, en~su~presencia,~todos nues-tros días.
+w: Y~a~ti,~niño,~te~llamarán~pro-feta~del~Al-tísimo, porque~irás~delante~del~Señor~a~preparar sus ca-minos, anunciando~a~su~pueblo la~salva-ción, el~perdón~de sus pe-ados.
+w: Por~la~entrañable~misericordia de~nuestro Dios, nos~visitará~el~sol~que~nace de lo alto, para~iluminar~a~los~que~viven~en~tinieblas~y~en sombra~de muerte, para~guiar~nuestros~pasos~por~el~camino de la paz.
+
+`;
+
+// 3. Renderizado visual y de audio para el solista
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof ABCJS !== "undefined") {
+            // A) Dibujar la partitura visual del solista
+            const visualObjArray = ABCJS.renderAbc("paper-solista", PARTITURA_SOLISTA, { 
+                responsive: "resize" 
+            });
+
+            // B) Activar el sintetizador de audio si el navegador lo soporta y la partitura es válida
+            if (visualObjArray && visualObjArray.length > 0 && ABCJS.synth.supportsAudio()) {
+                
+                // Creamos el control de reproducción visual (botón Play, barra de progreso, etc.)
+                const synthControl = new ABCJS.synth.SynthController();
+                synthControl.load("#audio-solista", null, {
+                    displayPlay: true,
+                    displayProgress: true,
+                    displayWarp: false
+                });
+
+                // Preparamos los datos de audio para el sintetizador
+                const createSynth = new ABCJS.synth.CreateSynth();
+                createSynth.init({
+                    visualObj: visualObjArray[0]
+                }).then(() => {
+                    synthControl.setTune(visualObjArray[0], false, {
+                        chordsOff: true
+                    }).catch((error) => {
+                        console.warn("Error al configurar el audio del solista:", error);
+                    });
+                }).catch((error) => {
+                    console.warn("Error al inicializar el sintetizador del solista:", error);
+                });
+            }
+        }
+    });
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>
