@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Da pacem ... in diebus</title>
-=======
-    <title>Da pacem cordium</title>
->>>>>>> bc04c04 (benedictus dominus deus)
+    <title>Jesu, redemptor</title>
+
     <!-- Librerías de ABCJS -->
     <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
@@ -24,20 +21,17 @@
             <a href="../index.html#repertorio">← Volver al Índice</a>
         </div>
 
-<<<<<<< HEAD
-        <h1>Da pacem ... in diebus</h1>
-=======
-        <h1>Da pacem cordium</h1>
->>>>>>> bc04c04 (benedictus dominus deus)
+
+        <h1>Jesu redemptor</h1>
 
         <!-- Checkboxes de voces -->
         <div>
             <span class="letrero-voces-transporte">Voces Activas</span>
         <div class="voces-container">
-            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Voz aguda</label>
-            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Voz grave</label>
-            <label id="chk-T"></label>
-            <label id="chk-B"></label>
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
+            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
         </div>
             
         </div>
@@ -49,14 +43,10 @@
 
     <div class="container">
         <h1>Notas</h1>
-<<<<<<< HEAD
             <div><p class="letrero-voces-transporte">Traducción</p>
-                <div class="subparrafo">Danos la paz, Señor, en nuestros días.</div>
+                <div class="subparrafo">Jesús, redentor del mundo, luz y esplendor del Padre; a ti sea la gloria, a ti, Jesús.</div>
             </div>
-=======
-            <div><p class="letrero-voces-transporte">Traducción</p></div>
-            <div class="subparrafo">Danos la paz del corazón.</div>
->>>>>>> bc04c04 (benedictus dominus deus)
+
     </div>
 
     <footer>
@@ -86,35 +76,16 @@
     <script>
         const MI_PARTITURA = `
 X:1
-<<<<<<< HEAD
-T:Da pacem ... in diebus
-T:Cf Eclesiástico 50
-M:C
+T:Jesu redemptor
+M:3/4
 L:1/4
-K:G
-Q: 1/4=100
-=======
-T:Da pacem cordium
-M:C
-L:1/4
-K:Bb
-Q: 1/2=72
->>>>>>> bc04c04 (benedictus dominus deus)
+K:D
+Q: 1/4=78
 %%score [S A T B]
 V:S name="S" clef=treble
-[V:S] G2 A B | c3/2 c/2 B3 | z d c A |B G A A/B/ | c2 B2 | A2 G2 :|]
-w: Da pa-cem Do-mi-ne, da pa-cem o Chris-te, in di-e-bus nos-
-w: (tris)
-V:A name="C" clef=treble
-[V:A] G2 F2 | E4 | E/E/E/E/ F E/F/ |D4 :|]
-w: O _ _ A-do-ra-mus te, O Chris-te.
-V:T name="T" clef=bass
-[V:T] D4 | B,4 | A,/A,/A,/B,/ A, A,/A, | G,4 :|]
-w: O _ A-do-ra-mus te, O Chris-te.
-V:B name="B" clef=bass
-[V:B] G,2 D,2 | E,4 | A,,/A,,/A,,/A,,/ D, D,/D,/ | G,4 :|]
-w: O _ _ A-do-ra-mus te, O Chris-te.
-`;
+[V:S] D [|: D/E/ F/A/ | G/F/ E x E/F/ || A/B/ A/A/ d/c/ | B A2 || d A F | B/d/ c x B/A/ || F D3/2 D/ | E/E/ [AA,]2 :|]
+w: Je-su re-demp-tor om-ni-um, tu _ lu _ men et splen-dor Pa-tris, ti-bi sit glo-ri-a, ti-bi Je-sum sit glo-ri-a.
+`
 </script>
 
 <script src="../motor.js"></script>
