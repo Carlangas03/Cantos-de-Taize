@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El reino de Dios (The kingdom of God)</title>
+
+    <!-- Librerías de ABCJS -->
+    <script src="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-basic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/abcjs@6.2.2/dist/abcjs-audio.css">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../imagenes/cruz-taize.png">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Enlace para volver -->
+        <div>
+            <a href="../index.html#repertorio">← Volver al Índice</a>
+        </div>
+
+
+        <h1>El reino de Dios (The kingdom of God)</h1>
+
+        <!-- Checkboxes de voces -->
+        <div>
+            <span class="letrero-voces-transporte">Voces Activas</span>
+        <div class="voces-container">
+            <label><input type="checkbox" id="chk-S" checked onchange="actualizarMotor()"> Soprano</label>
+            <label><input type="checkbox" id="chk-A" checked onchange="actualizarMotor()"> Contralto</label>
+            <label><input type="checkbox" id="chk-T" checked onchange="actualizarMotor()"> Tenor</label>
+            <label><input type="checkbox" id="chk-B" checked onchange="actualizarMotor()"> Bajo</label>
+        </div>
+            
+        </div>
+
+        <!-- Contenedores de la partitura y reproductor -->
+        <div id="paper" style="background: white; padding: 15px; border-radius: 8px; box-sizing: border-box;"></div>
+        <div id="audio" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="container">
+        <h1>Notas</h1>
+            <div><p class="letrero-voces-transporte">Letra original</p></div>
+                <div class="subparrafo"><i>The kingdom of God is justice and peace, and joy in the Holy Spirit. Come, Lord, and open in us the gates of your Kingdom.</i></div>
+            <div><p class="letrero-voces-transporte">Traducción literal</p></div>
+                <div class="subparrafo">El reino de Dios es justicia y paz, y alegría en el Espíritu Santo. Ven, Señor, y abre en nosotros las puertas de tu Reino (Romanos 14,17).</div>
+    </div>
+
+    <footer>
+        <div class="footer-social-row">
+            <!-- Elemento 1: GitHub -->
+            <a href="https://github.com/Carlangas03/Cantos-de-Taize" target="_blank" class="footer-social-item">
+                <!-- Icono SVG de GitHub -->
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span>Repositorio</span>
+            </a>
+
+            <!-- Elemento 2: Gmail (Ejemplo de cómo replicarlo) -->
+            <a href="mailto:ccastillosanchez2003@gmail.com" class="footer-social-item">
+                <!-- Icono SVG de Gmail/Correo -->
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm0 2l-7 4.5L5 6h14zM5 18V8l7 4.5L19 8v10H5z"/>
+                </svg>
+                <span>Correo</span>
+            </a>
+
+        </div>
+    </footer>
+
+    <!-- Script con la partitura de esta canción -->
+    <script>
+        const MI_PARTITURA = `
+X:1
+T:El reino de Dios (The kingdom of God)
+T:Romanos 14,17
+M:C
+L:1/4
+K:G
+Q: 1/4=74
+%%score [S A T B]
+V:S name="S" clef=treble
+[V:S] E/ [|: E E/E/ G G | A/A/ G F3/2 F/2 | G2 A/B/ c/B/ | A2 A2 | B G2 B | c d/d/ A3/2 A/2 | B2 G (A/G/) | F2 G3/2 E/2 :|]
+w: [ES]~El rei-no de Dios es rei-no de paz, jus-ti-cia y a-le-grí-a. Ven, Dios, y a-bre en mí las puer-tas del _ Rei-no. El
+w: [EN]~The king-dom of God is jus-tice and peace, and joy in the Ho-ly Spi-rit. Come, Lord, and o-pen in us the gates of your _ King-dom. The
+V:A name="A" clef=treble
+[V:A] B,/ [|: B, B,/B,/ E E | C/C/ D D3/2 D/2 | D2 F/F/ E/E/ | E2 F2 | D E2 E | E G/G/ F3/2  F/2 | F2 E E | D2 D3/2 B,/2 :|]
+w: [ES]~El rei-no de Dios es rei-no de paz, jus-ti-cia y a-le-grí-a. Ven, Dios, y a-bre en mí las puer-tas del Rei-no. El
+w: [EN]~The king-dom of God is jus-tice and peace, and joy in the Ho-ly Spi-rit. Come, Lord, and o-pen in us the gates of your King-dom. The
+V:T name="T" clef=bass
+[V:T] G,/ [|: G, G,/G,/ G, G, | E,/E,/ G, A,3/2 A,/2 | B,2 A,/A,/ G,/G,/ | C2 A,2 | B, C2 G, | A, G,/G,/ D3/2 D/2 | D2 B, C | A,2 B,3/2 G,/2 :|]
+w: [ES]~El rei-no de Dios es rei-no de paz, jus-ti-cia y a-le-grí-a. Ven, Dios, y a-bre en mí las puer-tas del _ Rei-no. El
+w: [EN]~The king-dom of God is jus-tice and peace, and joy in the Ho-ly Spi-rit. Come, Lord, and o-pen in us the gates of your King-dom. The
+V:B name="B" clef=bass
+[V:B] E,/ [|: E, E,/E,/ C, B,, | A,,/A,,/ B,, D,3/2 D,/2 | G,2 D,/D,/ E,/E,/ | C,2 D,2 | G,, C,2 B,, | A,, B,,/B,,/ D,3/2 D,/2 | B,,2 E, C, | D,2 G,,3/2 E,/2 :|]
+w: [ES]~El rei-no de Dios es rei-no de paz, jus-ti-cia y a-le-grí-a. Ven, Dios, y a-bre en mí las puer-tas del _ Rei-no. El
+w: [EN]~The king-dom of God is jus-tice and peace, and joy in the Ho-ly Spi-rit. Come, Lord, and o-pen in us the gates of your King-dom. The
+`
+</script>
+
+<script src="../motor.js"></script>
+</body>
+</html>
