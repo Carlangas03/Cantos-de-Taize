@@ -42,6 +42,9 @@
     <div class="container">
         <h1>Notas</h1>
             <div><p class="letrero-voces-transporte">Frases de solista</p>
+                <div id="paper-solista" style="background: white; padding: 15px; border-radius:8px; box-sizing: border-box;"></div>
+                <div id="audio-solista" style="margin-top: 15 px;"></div>
+                
                 <ol>
                     <li>El amor es paciente, es afable, no tiene envidia.</li>
                     <li>El amor no se alegra de la injusticia si no que goza en la verdad.</li>
@@ -104,6 +107,55 @@ V:B name="B" clef=bass
 [V:B] C, [|: F,/2 F,3/2 C, E,/E,/ | A,,3 C, | D,/ D,3/2 E, G, | F,2 F, C, | F,/2 F,3/2 C, E,/E,/ | A,,3 C, | D,/ D,3/2 E, G, | F,2 F,2  || (F,2 E, D, | C,2 D,2) | (B,,2 D,2 | E,3) C, :|]
 w: El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. El al-ma que~an-da~en a-mor, ni can-sa ni se can-sa. O ____ O __ El
 `;
+
+// 2. La partitura exclusiva para la melodía del solista
+    const PARTITURA_SOLISTA = `
+X:2
+T:Melodía del Solista
+M:C
+L:1/4
+K:G
+Q=60
+V:Solo clef=treble
+[V:Solo] D E F F G A G E F G A F4 D E F G F 
+w: El a-mor es pa-cien-te, es a-fa-ble, no tie-ne en-vi-dia.
+`;
+
+// 3. Renderizado visual y de audio para el solista
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof ABCJS !== "undefined") {
+            // A) Dibujar la partitura visual del solista
+            const visualObjArray = ABCJS.renderAbc("paper-solista", PARTITURA_SOLISTA, { 
+                responsive: "resize" 
+            });
+
+            // B) Activar el sintetizador de audio si el navegador lo soporta y la partitura es válida
+            if (visualObjArray && visualObjArray.length > 0 && ABCJS.synth.supportsAudio()) {
+                
+                // Creamos el control de reproducción visual (botón Play, barra de progreso, etc.)
+                const synthControl = new ABCJS.synth.SynthController();
+                synthControl.load("#audio-solista", null, {
+                    displayPlay: true,
+                    displayProgress: true,
+                    displayWarp: false
+                });
+
+                // Preparamos los datos de audio para el sintetizador
+                const createSynth = new ABCJS.synth.CreateSynth();
+                createSynth.init({
+                    visualObj: visualObjArray[0]
+                }).then(() => {
+                    synthControl.setTune(visualObjArray[0], false, {
+                        chordsOff: true
+                    }).catch((error) => {
+                        console.warn("Error al configurar el audio del solista:", error);
+                    });
+                }).catch((error) => {
+                    console.warn("Error al inicializar el sintetizador del solista:", error);
+                });
+            }
+        }
+    });
 </script>
 
 <script src="../motor.js"></script>

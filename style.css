@@ -219,7 +219,8 @@ h1 { margin-top: 0;
     padding: var(--padding-general); }
 ul { list-style: none; 
     padding: var(--padding-general); }
-li { margin: var(--sangria-subparrafo-general); }
+li { margin: var(--sangria-subparrafo-general); 
+    text-align: justify; }
 a { text-decoration: none; 
     color: var(--color-acento); 
     font-weight: bold; 
